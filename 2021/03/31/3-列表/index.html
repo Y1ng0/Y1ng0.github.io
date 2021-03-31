@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Tags, Y1ng0&#39;s blog">
+    <meta name="keywords" content="Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Tags | Y1ng0&#39;s blog</title>
+    <title>Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">tags</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -355,7 +355,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-03-30
+                    2021-03-31
                 </div>
                 
 
@@ -376,7 +376,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <hr>
+<p>title:list<br>category:python</p>
+<hr>
+<p>常见的序列结构:列表[].元组(),字符串,字典{},集合{}以及range,zip,filter</p>
+<p>​                只有列表,字典,集合为可变序列</p>
+<p><img src="/media/1.png" alt="1"></p>
+<p>​                列表,元组,以及字符串支持<code>双向索引</code>:</p>
+<p>​                        即从前面:第一个元素下标为0,以此类推</p>
+<p>​                            从后面:第一个元素下标为-1,以此类推</p>
+<p><img src="/media/2.png" alt="2"></p>
+<p>列表的增加也可用+:</p>
+<p>​    原理:将列表复制后后面添加元素</p>
+<p>​    所以:会很慢,不推荐使用</p>
+<p>​        与append的比较:            </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">start = time.time() <span class="comment">#计算当前时间</span></span><br><span class="line">result = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>): <span class="comment">#计算+所用时间</span></span><br><span class="line">    result = result + [i]</span><br><span class="line"><span class="built_in">print</span>(result,<span class="string">&#x27;,&#x27;</span>,time.time()-start)</span><br><span class="line"></span><br><span class="line">start = time.time() <span class="comment">#计算当前时间</span></span><br><span class="line">result = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000</span>): <span class="comment">#计算append所用时间</span></span><br><span class="line">    result.append(i)</span><br><span class="line"><span class="built_in">print</span>(result,<span class="string">&#x27;,&#x27;</span>,time.time()-start)</span><br></pre></td></tr></table></figure>
+
+<p>list(): 将序列转化为列表</p>
+<p>del(): 删除列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#例:删除列表中的重复元素</span></span><br><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>] <span class="comment">#错误示范</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> x:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">        x.remove(i)</span><br></pre></td></tr></table></figure>
+
+<p>为什么上述例子错了呢?</p>
+<p>​    因为每删除列表一个元素,下一个元素就会<code>自动前移</code>,所以会有漏网之鱼,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>] <span class="comment">#正确示范1:   使用切片</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> x[::]:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">        x.remove(i)</span><br></pre></td></tr></table></figure>
+
+<p>关于<code>切片</code>:</p>
+<p>​    使用其来截取列表的任何部分</p>
+<p>​    使用2个冒号分隔的3个数字完成:</p>
+<p>​        第1个数字:    切片开始位置(默认0)</p>
+<p>​        第2个数字:    切片截止位置</p>
+<p>​        第3个数字:    切片的步长(默认为1)</p>
+<p>​    </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用切片增加元素:</span></span><br><span class="line"> a_list = [<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>] <span class="comment">#在尾部追加元素9</span></span><br><span class="line">    a_list[<span class="built_in">len</span>(a_list):] = [<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用切片替换元素:</span></span><br><span class="line"> a_list = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>] <span class="comment">#替换前3个元素为1</span></span><br><span class="line">    a_list[:<span class="number">3</span>] = [<span class="number">1</span>] * <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#使用切片删除元素:</span></span><br><span class="line"> a_list = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">9</span>] <span class="comment">#删除前3个元素</span></span><br><span class="line">	a_list[:<span class="number">3</span>] = []    </span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>] <span class="comment">#正确示范2:   从后往前删除</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x)-<span class="number">1</span>,-<span class="number">1</span>,-<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">del</span> x[i]</span><br></pre></td></tr></table></figure>
+
+<p>python采用:基于值得<code>自动内存管理</code>方式,当为对象修改值时,并不是真的直接修改变量的值,而是使变量指向新的值.</p>
+<p>​    所以列表中包含的是元素值的引用</p>
+<p>id(): 查看内存地址</p>
+<p>小习题:从键盘读入一个正整数n,进行数据合法性检查，然后求2到n之间所有的素数，并以列表的形式显示这些素数，即，将素数作为列表元素，保存到一个列表中，最后打印列表</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="built_in">eval</span>(<span class="built_in">input</span>(<span class="string">&quot;please input a num:&quot;</span>))</span><br><span class="line">a_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">type</span>(n)==<span class="built_in">int</span>) <span class="keyword">and</span> n&gt;<span class="number">0</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,i):</span><br><span class="line">            <span class="keyword">if</span> i%j==<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            a_list.append(i)</span><br><span class="line">    <span class="built_in">print</span>(a_list)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;the num is wrong,please input again!&quot;</span>)</span><br><span class="line">                </span><br></pre></td></tr></table></figure>
+
+
                 
             </div>
             <hr/>
@@ -402,7 +445,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/tags/index.html">http://example.com/tags/index.html</a>
+                    <a href="http://example.com/2021/03/31/3-%E5%88%97%E8%A1%A8/">http://example.com/2021/03/31/3-%E5%88%97%E8%A1%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -614,13 +657,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/tags/index.html">
+                <a href="/2021/03/31/3-%E5%88%97%E8%A1%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="tags">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">tags</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -631,7 +674,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
                             </span>
                         <span class="publish-author">
                             
@@ -649,16 +692,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/tags/index.html">
+                <a href="/2021/03/30/The%20useful%20ways%20to%20login%20in%20github/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="tags">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="The useful way to login in github">
                         
-                        <span class="card-title">tags</span>
+                        <span class="card-title">The useful way to login in github</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -673,13 +716,16 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Mr.Li
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/misc/" class="post-category">
+                                    misc
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
