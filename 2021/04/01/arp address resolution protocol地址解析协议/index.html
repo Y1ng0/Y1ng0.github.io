@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-03-31
+                    2021-04-01
                 </div>
                 
 
@@ -389,41 +389,40 @@
 <p>根据ip地址获取物理地址的一个TCP/IP协议 </p>
 <p>原理:<code>同一个局域网内.将自己伪造成网关,从而获得其他主机的流量,进而进行dns欺骗等攻击</code> </p>
 <p>实战分析:</p>
-<p>攻击机: kali虚拟机<img src="https://uploader.shimo.im/f/w5ju9NhHzgIBsZYY.png!thumbnail" alt="img"></p>
-<p>靶机:<img src="https://uploader.shimo.im/f/j1npMcYfN0VJpCX0.png!thumbnail" alt="img">  </p>
+<p>攻击机: kali虚拟机<img src="/pictures/3.png"></p>
+<p>靶机:<img src="/pictures/4.png">  </p>
 <p>首先扫描局域网内的所有up的主机:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.0.0&#x2F;24</span><br></pre></td></tr></table></figure>
-
-<p>找到所需靶机 </p>
+<p><img src="/pictures/5.png"><br>找到所需靶机 </p>
 <p>首先进行重定向分配:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward</span><br></pre></td></tr></table></figure>
 
-<p>(查看是否成功:cat /proc/sys/net/ipv4/ip_forward 是否为1)<img src="https://uploader.shimo.im/f/3W9xFDs9bKsQ6O4o.png!thumbnail" alt="img"></p>
+<p>(查看是否成功:cat /proc/sys/net/ip4/ip_forward 是否为1)<img src="/pictures/6.png"></p>
 <p>如果不分配,流量发送到kali无法到达网关,会使目标断网 </p>
 <p>然后进行arp欺骗</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i eth0 -t 192.168.0.103 192.168.0.1</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://uploader.shimo.im/f/GGEVsbG2yIJod1Lx.png!thumbnail" alt="img"><code>-i 选择网卡-t target 选择目标 第一个ip为靶机,第二个ip为局域内的网关</code> </p>
+<p><img src="/pictures/7.png"><code>-i 选择网卡-t target 选择目标 第一个ip为靶机,第二个ip为局域内的网关</code> </p>
 <p>到此arp欺骗已经成功 </p>
 <p>接下来可以尝试<code>arp攻击中的dns欺骗</code>:</p>
 <p>所用工具:ettercap </p>
-<p>ps:先通过etter.conf选择系统版本:linux,将前面注释去掉<img src="https://uploader.shimo.im/f/aMuUPAUxELSyXT4M.png!thumbnail" alt="img"> 配置ettercap中的etter.dns文件(路径: /etc/ettercap/etter.dns)<img src="https://uploader.shimo.im/f/tmSJHpM0EV8LA0P7.png!thumbnail" alt="img"></p>
+<p>ps:先通过etter.conf选择系统版本:linux,将前面注释去掉<img src="/pictures/8.png"> 配置ettercap中的etter.dns文件(路径: /etc/ettercap/etter.dns)<img src="/pictures/9.png"></p>
 <p>为了防止双重验证可加上反向解析:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.com PTR 192.168.0.100*.cn PTR 192.168.0.100 </span><br></pre></td></tr></table></figure>
 
 <p>然后打开ettercap(比较懒,用的是图形化界面</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ettercap -G</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://uploader.shimo.im/f/CQZ2eYGfaHD4R4EJ.png!thumbnail" alt="img"></p>
-<p>  进行dns_spoof<img src="https://uploader.shimo.im/f/77aE7lcD1u1h1Szy.png!thumbnail" alt="img"> 欺骗后如何获得用户输入的数据呢?</p>
+<p><img src="/pictures/10.png"></p>
+<p>  进行dns_spoof<img src="/pictures/11.png"> 欺骗后如何获得用户输入的数据呢?</p>
 <p>可以制作动态网站,通过一个php文件打印到txt文档中</p>
-<p><img src="https://uploader.shimo.im/f/O1Sboda9lXRWGROi.png!thumbnail" alt="img"></p>
+<p><img src="/pictures/12.png"></p>
 <p>index.html 是自己制作的假登陆网站 (不要忘记开启代理服务)(kali默认apache2 )</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(命令: systemctl start apache2 或 services apache2 start)(apache主页的默认路径: &#x2F;var&#x2F;www&#x2F;html&#x2F;index.html) </span><br></pre></td></tr></table></figure>
 
-<p><img src="https://uploader.shimo.im/f/uFsWehtlzACvIjDX.png!thumbnail" alt="img"> houtai.php      </p>
+<p><img src="/pictures/13.png"> houtai.php      </p>
 <p>登录网站的数据post到此1.txt                 </p>
-<p>php文件将用户输入的数据打印到此 所用到的php语句:<img src="https://uploader.shimo.im/f/b4au7fOG6tYlMkkj.png!thumbnail" alt="img"></p>
+<p>php文件将用户输入的数据打印到此 所用到的php语句:<img src="/pictures/14.png"></p>
 <p>定义一个$pas变量 </p>
 <p>定义一个$content变量</p>
 <p>定义一个$filed变量   </p>
@@ -466,7 +465,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/03/31/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">http://example.com/2021/03/31/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/</a>
+                    <a href="http://example.com/2021/04/01/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">http://example.com/2021/04/01/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -678,7 +677,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/2021/03/31/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">
+                <a href="/2021/04/01/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">
                     <div class="card-image">
                         
                         
@@ -695,7 +694,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
                             </span>
                         <span class="publish-author">
                             
