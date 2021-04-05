@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="人工智能之数据模型建造-预测成绩, Y1ng0&#39;s blog">
+    <meta name="keywords" content="绕过开机密码（不通过PE盘）, Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>人工智能之数据模型建造-预测成绩 | Y1ng0&#39;s blog</title>
+    <title>绕过开机密码（不通过PE盘） | Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">人工智能之数据模型建造-预测成绩</h1>
+                    <h1 class="description center-align post-title">绕过开机密码（不通过PE盘）</h1>
                 </div>
             </div>
         </div>
@@ -351,8 +351,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/misc/" class="post-category">
+                                misc
                             </a>
                         
                     </div>
@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-01
+                    2021-04-04
                 </div>
                 
 
@@ -385,10 +385,47 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>思路:通过’scores’的表格数据,搭建前10门课与最后一门Linux操作系统之间关系的模型</p>
-<p>​     然后应用这个模型,预测成绩</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np				<span class="comment">#处理矩阵</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd				<span class="comment">#处理表格数据</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt	 <span class="comment">#数据可视化:plot(折线图)scatter(离散图)</span></span><br><span class="line"></span><br><span class="line">scores = pd.read_csv(<span class="string">&quot;/medias/documents/scores.csv&quot;</span>)		<span class="comment">#打开表格</span></span><br><span class="line">scores.head()											 <span class="comment">#显示前5行</span></span><br><span class="line">scores.tail()											 <span class="comment">#显示后5行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression			<span class="comment">#构建模型</span></span><br><span class="line"></span><br><span class="line">X = np.array(scores.iloc[:,<span class="number">1</span>,-<span class="number">1</span>])						   <span class="comment">#行列切片</span></span><br><span class="line">y_os = np.array(scores.iloc[:,-<span class="number">1</span>])</span><br><span class="line"><span class="comment">#iloc函数:column name too long,不好输入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#构建折线图:x轴为学生序列号,y轴为linux os socres</span></span><br><span class="line">plt.plot(<span class="built_in">range</span>(<span class="built_in">len</span>(y_os)),y_os,color = <span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;Student.NO&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;Linux OS socres&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一个线性回归对象</span></span><br><span class="line">regressor = LinearRegression()</span><br><span class="line">y_os = y_os.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#模型训练</span></span><br><span class="line">regressor.fit(X,y_os)</span><br><span class="line"></span><br><span class="line"><span class="comment">#模型测试</span></span><br><span class="line">X_sample = np.array[[<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>,<span class="number">80</span>]]</span><br><span class="line">y_predict = regressor.predict(X_sample)</span><br><span class="line"><span class="built_in">print</span>(y_predict)</span><br></pre></td></tr></table></figure>
-
+                <p>利用粘滞键:连按5次shift键,弹出窗口,即可利用 利用windows错误修复(通过开机时断电)</p>
+<p><img src="/medias/pictures/15.png"></p>
+<p> 选择取消,让win7尝试修复</p>
+<p><img src="/medias/pictures/16.png"></p>
+<p>  肯定修复不明白</p>
+<p><img src="/medias/pictures/17.png"> </p>
+<p>打开第二个文档 是一个记事本 </p>
+<p><img src="/medias/pictures/18.png"> </p>
+<p>在文件中可以找到”打开选项”,即可进入系统目录 </p>
+<p><img src="/medias/pictures/19.png"> </p>
+<p><img src="/medias/pictures/20.png"> </p>
+<p>那么就可以有一个思路: 找到cmd 复制一个新的并将其重命名为粘滞键的程序 </p>
+<ol>
+<li><p>进入<code>windows\system32\</code>找到<code>sethc</code> 也就是粘滞键的程序 </p>
+<p><img src="/medias/pictures/21.png"> </p>
+</li>
+<li><p>将sethc改掉任意名,cmd复制并重命名为sethc</p>
+<p><img src="/medias/pictures/22.png"> </p>
+</li>
+<li><p>然后重启 再次连按5次shift键即可打开cmd窗口 </p>
+</li>
+<li><p>就可以有两种思路:</p>
+<p>​    1.更改密码</p>
+<p>​    <code>net user</code> 查看用户</p>
+<p>​    <code>net user 用户名 &quot;&quot;密码&quot;</code> 更改密码</p>
+<p>​    2.添加用户<code>net user root 123 /add</code></p>
+<p>​       移动到管理员组<code>net  localgroup administrators root /add</code>  </p>
+<p>cmd常见的小命令:</p>
+<p>​                <code>rd/s/q C:\Users\Administrator\myfirstwebpack</code>执行后会永久删除文件。</p>
+<p>​                 自动关机:<code>shutdown -s -t</code> 0 0秒后自动关机  </p>
+<p>​                 添加计划任务:<code>at 09:09 ./1.bat</code> 补充:在win10中at命令已经弃用,改<code>schtasks</code></p>
+<p>​                 复制文件:<code>copy -r</code> </p>
+<p>​                 启动net use服务;:net start networkstation`  </p>
+<p>cmd编写文件:</p>
+<p>echo &gt;1.txt  覆盖原来文件</p>
+<p>echo &gt;&gt;1.txt 从最后一行开始写 </p>
+<p>重命名:rename </p>
+<p>win10的登录界面程序从<code>sethc变为utilman</code>可以重复上述步骤</p>
+<p>具体步骤就不再演示           </p>
+</li>
+</ol>
 
                 
             </div>
@@ -415,7 +452,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BB%BA%E9%80%A0-%E9%A2%84%E6%B5%8B%E6%88%90%E7%BB%A9/">http://example.com/2021/04/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BB%BA%E9%80%A0-%E9%A2%84%E6%B5%8B%E6%88%90%E7%BB%A9/</a>
+                    <a href="http://example.com/2021/04/04/win7win10/">http://example.com/2021/04/04/win7win10/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -622,9 +659,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/04/win7win10/">
                     <div class="card-image">
@@ -642,9 +680,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -657,6 +695,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -667,13 +706,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/01/arp%20address%20resolution%20protocol%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE/">
+                <a href="/2021/04/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BB%BA%E9%80%A0-%E9%A2%84%E6%B5%8B%E6%88%90%E7%BB%A9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="dns spoof by arp">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="人工智能之数据模型建造-预测成绩">
                         
-                        <span class="card-title">dns spoof by arp</span>
+                        <span class="card-title">人工智能之数据模型建造-预测成绩</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -690,8 +729,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/kali/" class="post-category">
-                                    kali
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
