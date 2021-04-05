@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Category: python, Y1ng0&#39;s blog">
+    <meta name="keywords" content="Category: ctf, Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Category: python | Y1ng0&#39;s blog</title>
+    <title>Category: ctf | Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -282,7 +282,7 @@
                 
                 <a href="/categories/python/" title="python: 3">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
+                             chip-default "
                             style="background-color: #F9EBEA;">python
                         <span class="tag-length">3</span>
                     </span>
@@ -309,7 +309,7 @@
                 
                 <a href="/categories/ctf/" title="ctf: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
+                             chip-active "
                             style="background-color: #E8F8F5;">ctf
                         <span class="tag-length">1</span>
                     </span>
@@ -329,114 +329,40 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/04/01/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B9%8B%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E5%BB%BA%E9%80%A0-%E9%A2%84%E6%B5%8B%E6%88%90%E7%BB%A9/">
+                    <a href="/2021/04/05/mysql%E8%AF%AD%E5%8F%A5/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="人工智能之数据模型建造-预测成绩">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="sql注入">
                             
-                            <span class="card-title">人工智能之数据模型建造-预测成绩</span>
+                            <span class="card-title">sql注入</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                思路:通过’scores’的表格数据,搭建前10门课与最后一门Linux操作系统之间关系的模型
-​     然后应用这个模型,预测成绩
-1234567891011121314151617181920212223242526272829303
+                                mysql语句:
+
+load_file():读文件
+
+知道文件绝对路径
+
+能够使用union select(联合查询)
+​    有显示位:    order by
+​    union必须由两条及以上select查询语句
+​    每个查
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/31/py%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E4%BF%A1%E6%81%AF%20%20By%20%E7%88%AC%E8%99%AB/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="获取天气信息  By 爬虫">
-                            
-                            <span class="card-title">获取天气信息  By 爬虫</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                way 1:   通过 聚合数据 网站,找到天气预报的api接口
-123456789101112131415import requestsurl = &quot;http://apis.juhe.cn/simpleWeather/query
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/03/31/3-%E5%88%97%E8%A1%A8/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="list">
-                            
-                            <span class="card-title">list</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                常见的序列结构:列表[].元组(),字符串,字典{},集合{}以及range,zip,filter
-​                只有列表,字典,集合为可变序列
-
-​                列表,元组,以及字符串支持双向索引:
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/python/" class="post-category">
-                                    python
+                                <a href="/categories/ctf/" class="post-category">
+                                    ctf
                                 </a>
                                 
                                 
