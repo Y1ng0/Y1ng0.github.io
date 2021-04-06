@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-05
+                    2021-04-06
                 </div>
                 
 
@@ -434,15 +434,28 @@
 <li>group_concat():多行变为一组</li>
 </ol>
 </li>
-</ol>
-
+<li><p>查看数据库的根目录（绝对路径）： @@datadir</p>
+<pre><code>              也可以通过报错（不一定会显示）
+              进入后台
+              网站扫描
+              乌云网（白帽子提交其他网站安全漏洞上交）可能泄漏
+</code></pre>
+</li>
+<li><p>报错注入的常用函数：    将所查询内容通过报错语句带出</p>
+<ol>
+<li>extractvalue():从目标xml中返回包含所查询值的字符串              最多爆出32位（substr（）两次拼接）<br> extractvalue(xml_document,xpath_string)<br> 第一个参数：xml_document是string格式，为xml文档对象的名称<br> 第二个参数：xpath_string是xpath格式的字符串<br> id =1 and extractvalue(1,contact(#,database()))</li>
+<li>updatexml():等同于extractvalue(),只不过多了一个参数           最多爆出32位<br> id=1 and updatexml(1,contact(#,database()),1)    </li>
+<li>
 
 	<div class="row">
     <embed src="/medias/documents/sql注入.pdf" width="100%" height="550" type="application/pdf">
 	</div>
 
 
-            
+ </li>
+</ol>
+</li>
+</ol>
 
                 
             </div>
@@ -469,7 +482,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/05/mysql%E8%AF%AD%E5%8F%A5/">http://example.com/2021/04/05/mysql%E8%AF%AD%E5%8F%A5/</a>
+                    <a href="http://example.com/2021/04/06/mysql%E8%AF%AD%E5%8F%A5/">http://example.com/2021/04/06/mysql%E8%AF%AD%E5%8F%A5/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -676,9 +689,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2021/04/06/mysql%E8%AF%AD%E5%8F%A5/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="sql注入">
+                        
+                        <span class="card-title">sql注入</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ctf/" class="post-category">
+                                    ctf
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2021/04/05/3-%E5%88%97%E8%A1%A8/">
                     <div class="card-image">
@@ -696,56 +752,15 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
                             <a href="/categories/python/" class="post-category">
                                     python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/04/04/win7win10/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="绕过开机密码（不通过PE盘）">
-                        
-                        <span class="card-title">绕过开机密码（不通过PE盘）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/misc/" class="post-category">
-                                    misc
                                 </a>
                             
                             
