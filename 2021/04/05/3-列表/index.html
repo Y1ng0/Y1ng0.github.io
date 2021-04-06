@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-03-31
+                    2021-04-05
                 </div>
                 
 
@@ -423,7 +423,7 @@
 <p>​    所以列表中包含的是元素值的引用</p>
 <p>id(): 查看内存地址</p>
 <p>小习题:从键盘读入一个正整数n,进行数据合法性检查，然后求2到n之间所有的素数，并以列表的形式显示这些素数，即，将素数作为列表元素，保存到一个列表中，最后打印列表</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="built_in">eval</span>(<span class="built_in">input</span>(<span class="string">&quot;please input a num:&quot;</span>))</span><br><span class="line">a_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">type</span>(n)==<span class="built_in">int</span>) <span class="keyword">and</span> n&gt;<span class="number">0</span>:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,i):</span><br><span class="line">            <span class="keyword">if</span> i%j==<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            a_list.append(i)</span><br><span class="line">    <span class="built_in">print</span>(a_list)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;the num is wrong,please input again!&quot;</span>)</span><br><span class="line">                </span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="built_in">input</span>(<span class="string">&quot;please input a num:&quot;</span>)</span><br><span class="line">a_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> n.isdigit():</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">type</span>(n)==<span class="built_in">int</span>) <span class="keyword">and</span> n&gt;<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,i):</span><br><span class="line">                <span class="keyword">if</span> i%j==<span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    a_list.append(i)</span><br><span class="line">        <span class="built_in">print</span>(a_list)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;the num is wrong,please input again!&quot;</span>)</span><br><span class="line"></span><br><span class="line">                </span><br></pre></td></tr></table></figure>
 
 
                 
@@ -451,7 +451,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/03/31/3-%E5%88%97%E8%A1%A8/">http://example.com/2021/03/31/3-%E5%88%97%E8%A1%A8/</a>
+                    <a href="http://example.com/2021/04/05/3-%E5%88%97%E8%A1%A8/">http://example.com/2021/04/05/3-%E5%88%97%E8%A1%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -658,17 +658,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/03/31/py%E8%8E%B7%E5%8F%96%E5%A4%A9%E6%B0%94%E4%BF%A1%E6%81%AF%20%20By%20%E7%88%AC%E8%99%AB/">
+                <a href="/2021/04/05/3-%E5%88%97%E8%A1%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="获取天气信息  By 爬虫">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="list">
                         
-                        <span class="card-title">获取天气信息  By 爬虫</span>
+                        <span class="card-title">list</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -678,9 +679,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -693,6 +694,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -703,13 +705,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/03/31/The%20useful%20ways%20to%20login%20in%20github/">
+                <a href="/2021/04/05/mysql%E8%AF%AD%E5%8F%A5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="The useful way to login in github">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="sql注入">
                         
-                        <span class="card-title">The useful way to login in github</span>
+                        <span class="card-title">sql注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -720,14 +722,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/misc/" class="post-category">
-                                    misc
+                            <a href="/categories/ctf/" class="post-category">
+                                    ctf
                                 </a>
                             
                             
