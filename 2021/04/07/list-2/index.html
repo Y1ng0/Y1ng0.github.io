@@ -417,7 +417,7 @@
 </ol>
 <p>​    all():测试列表\元组等序列对象是否全部元素都等价于true即不为0</p>
 <p>​    any():测试列表\元组等序列对象是否有元素等价于true即不为0</p>
-<p>​    zip():<img src="C:\Users\86180\AppData\Local\Temp\1617784107818.png" alt="1617784107818"></p>
+<p>​    zip():<img src="/medias/pictures/23.png"></p>
 </li>
 </ol>
 <h1 id="序列的基本运算"><a href="#序列的基本运算" class="headerlink" title="序列的基本运算"></a>序列的基本运算</h1><ol>
@@ -428,9 +428,12 @@
 <li><p>sum(列表,[start]): 求和    等价于start+sum</p>
 <p>​    但是sum是将列表每个元素依次取出相加</p>
 <p>​    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">   </span><br></pre></td></tr></table></figure></li>
-<li><p>enumerate(列表): 返回枚举对象,每个元素为包含下标和值的元组</p>
 </li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a_list = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>]]</span><br><span class="line"><span class="built_in">sum</span>(a_list)</span><br><span class="line">等价于</span><br><span class="line"><span class="number">1</span>+<span class="number">2</span>+[<span class="number">3</span>,<span class="number">4</span>]+<span class="number">0</span>(start默认为<span class="number">0</span>)</span><br><span class="line">the program <span class="keyword">is</span> error</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>enumerate(列表): 返回枚举对象,每个元素为包含下标和值的元组</li>
 </ol>
 <h1 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h1><p>[expression  for expr1  in  sequence1  if  condition1</p>
 <p>​               for expr2  in  sequence2  if  condition2</p>
