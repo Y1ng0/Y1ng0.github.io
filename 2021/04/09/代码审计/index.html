@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="人工智能之线性回归-预测房价, Y1ng0&#39;s blog">
+    <meta name="keywords" content="代码审计, Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>人工智能之线性回归-预测房价 | Y1ng0&#39;s blog</title>
+    <title>代码审计 | Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">人工智能之线性回归-预测房价</h1>
+                    <h1 class="description center-align post-title">代码审计</h1>
                 </div>
             </div>
         </div>
@@ -351,8 +351,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/ctf/" class="post-category">
+                                ctf
                             </a>
                         
                     </div>
@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-08
+                    2021-04-09
                 </div>
                 
 
@@ -385,34 +385,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-2-一、房价预测"><a href="#1-2-一、房价预测" class="headerlink" title="1.2  一、房价预测"></a>1.2  一、房价预测</h2><h2 id="1-2-1-1-1-简单线性回归"><a href="#1-2-1-1-1-简单线性回归" class="headerlink" title="1.2.1    1.1 简单线性回归"></a>1.2.1    1.1 简单线性回归</h2><ol>
-<li>RM :房间数量</li>
-<li>LSTAT:低收入人群指数</li>
-<li>PTRATIO:小学生与教师数量比率</li>
-<li>MEDV：平均房价</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np                                                   <span class="comment">#处理数组与列表</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd                                                    <span class="comment">#读取表格文件</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt                                               <span class="comment">#绘图</span></span><br><span class="line"></span><br><span class="line">house_data = pd.read_csv(<span class="string">&#x27;housing.csv&#x27;</span>)                                       </span><br><span class="line"></span><br><span class="line">y_price = np.array(house_data.iloc[:,<span class="number">3</span>])/<span class="number">1000</span>                <span class="comment">#数值太大，以K为单位</span></span><br><span class="line">x_RM = np.array(house_data.iloc[:,<span class="number">0</span>])  <span class="comment">#先考虑一个变量，降低复杂难度#读取第1列，所有行</span></span><br><span class="line"></span><br><span class="line">plt.scatter(x_RM,y_price,color = <span class="string">&#x27;purple&#x27;</span>,\          <span class="comment">#\换行符</span></span><br><span class="line">label = <span class="string">&#x27;price&#x27;</span>                          <span class="comment">#绘制散点图 行，列，颜色，图例</span></span><br><span class="line">plt.xlabel(<span class="string">&#x27;The number of room in house&#x27;</span>)             <span class="comment">#横坐标</span></span><br><span class="line">plt.ylabel(<span class="string">&#x27;Price(K Dollar)&#x27;</span>)                         <span class="comment">#纵坐标</span></span><br><span class="line">plt.title(<span class="string">&#x27;The relation between price and RM&#x27;</span>)        <span class="comment">#标题</span></span><br><span class="line">plt.show()                                            <span class="comment">#绘制</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#线性回归模型构建</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression     </span><br><span class="line"></span><br><span class="line"><span class="comment">#将所有数据点分成训练集和测试集（8：2比例）两个部分</span></span><br><span class="line">X_train,X_test,y_train,y_test = \</span><br><span class="line">train_test_split(x_RM,y_price,test_size=<span class="number">0.2</span>,random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建一个线性回归对象</span></span><br><span class="line">regressor = LinearRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment">#将2个集合转换成2维数组</span></span><br><span class="line">X_train = X_train.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">y_train = y_train.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#模型训练</span></span><br><span class="line">regressor.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line"><span class="comment">#模型测试</span></span><br><span class="line">X_test = X_test.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">y_predict = regressor.predict(X_test)</span><br><span class="line"></span><br><span class="line">plt.scatter(X_test,y_test)     <span class="comment">#散点都是测试集中的已知结果</span></span><br><span class="line">plt.plot(X_test,y_predict,color = <span class="string">&#x27;red&#x27;</span>)    <span class="comment">#折线图，横坐标为测试点，竖坐标为模型预测值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#测试  RM=7时，模型的预测值</span></span><br><span class="line">X_single_test = np.array(<span class="number">7</span>).reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">y_predict_price = regressor.predict(X_single_test)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The predict price of RM=7 is $&quot;</span>,y_predict_price[<span class="number">0</span>][<span class="number">0</span>]*<span class="number">1000</span>)</span><br><span class="line">            </span><br><span class="line">plt.scatter(X_single_test,y_predict_price,color = <span class="string">&#x27;purple&#x27;</span>,s=<span class="number">200</span>)   <span class="comment">#</span></span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;The params of model: 1.coeff =&#x27;</span>,regressor.score(X_test,y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看预测模型与实际数据的差别</span></span><br><span class="line">plt.plot(<span class="built_in">range</span>(<span class="built_in">len</span>(y_predict)),y_test,color = <span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(<span class="built_in">len</span>(y_predict)),y_predict,color = <span class="string">&#x27;blue&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <h2 id="veryphp-ctf-show"><a href="#veryphp-ctf-show" class="headerlink" title="veryphp-ctf show"></a>veryphp-ctf show</h2><p><img src="/medias/pictures/24.png"></p>
+<p>显而易见，先对post的变量进行过滤，</p>
+<p>过滤掉“,_,.,%,*,~,^,”,:,(,),g,e,l,i,”</p>
+<p>因为变量名含有“_”，所以将其转变，在php语言中用‘+’，‘ ’，‘[’等表示</p>
+<p>然后对变量值进行正则匹配并限制字符长度为29</p>
+<p>利用burp修改：</p>
+<p>$shaw[root=-a9<b>xxxxxx&gt;&gt;&gt;&gt;zzabcdphp@Rsx</p>
+<p><img src="/medias/pictures/25.png"></p>
+<p>得到mint：</p>
+<p><img src="/meidas/pictures/1617947876645.png"></p>
+<p>1.在线爆破MD5</p>
+<p>2.脚本</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$SecretNumber</span>=<span class="number">10000</span>;<span class="variable">$SecretNumber</span>&lt;<span class="number">99999</span>;<span class="variable">$SecretNumber</span>++)</span><br><span class="line">&#123; <span class="variable">$str</span> = <span class="string">&quot;shaw&quot;</span>.(<span class="variable">$SecretNumber</span>).<span class="string">&quot;root&quot;</span>; </span><br><span class="line"><span class="keyword">if</span> (md5(<span class="variable">$str</span>) == <span class="string">&quot;166b47a5cb1ca2431a0edfcef200684f&quot;</span>)   </span><br><span class="line">&#123;   <span class="keyword">echo</span> <span class="variable">$SecretNumber</span>;   </span><br><span class="line"> 	<span class="keyword">exit</span>;   </span><br><span class="line">&#125; </span><br><span class="line">&#125; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>进入最后一层，要我们传入<code>$my_ans</code> 利用call_user_func来调用类里面的方法，因为oao方法下存在着<code>show_source(&quot;config.php&quot;);</code>则为<code>qwq::oao</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shaw root&#x3D;a9&lt;b&gt;xxxxxx&gt;&gt;&gt;&gt;zzabcdphp@Rsx&amp;ans&#x3D;21475&amp;my ans&#x3D;qwq::oao</span><br></pre></td></tr></table></figure>
 
-<p>​<br><img src="output_5_0.png" alt="png"></p>
-<pre><code>The predict price of RM=7 is $ 588061.07290092
-</code></pre>
-<p><img src="output_5_2.png" alt="png"></p>
-<pre><code>The params of model: 1.coeff = 0.5343110101130217
-</code></pre>
-<p><img src="output_5_4.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多元线性回归</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line"><span class="comment">#将影响房价的其他两个因素加上</span></span><br><span class="line">X = np.array(house_data.iloc[:,:<span class="number">3</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#训练，测试数据八二分</span></span><br><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y_price,test_size=<span class="number">0.2</span>,random_state=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#创造线性回归对象</span></span><br><span class="line">regressor = LinearRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment">#转换成二维数组，横坐标已是</span></span><br><span class="line">y_train = y_train.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#训练模型</span></span><br><span class="line">regressor.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line">y_predict = regressor.predict(X_test)</span><br><span class="line"></span><br><span class="line">plt.plot(<span class="built_in">range</span>(<span class="built_in">len</span>(y_predict)),y_test,color=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line">plt.plot(<span class="built_in">range</span>(<span class="built_in">len</span>(y_predict)),y_predict,color=<span class="string">&#x27;blue&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The model score is&quot;</span>,regressor.score(X_test,y_test))</span><br></pre></td></tr></table></figure>
-
-
-<p>​<br><img src="output_6_0.png" alt="png"></p>
-<pre><code>The model score is 0.6574622113312862
-</code></pre>
-<p>如果有人来咨询他的房屋有5间房，屋子所处社区的低收入指数为22.5，小学生和教师数量比率为3.4，那么他这间房屋的估价大概是多少？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X_house = np.array([<span class="number">5</span>,<span class="number">22.5</span>,<span class="number">3.4</span>]).reshape(<span class="number">1</span>,-<span class="number">1</span>)</span><br><span class="line">y_house_price = regressor.predict(X_house)</span><br><span class="line"><span class="built_in">print</span>(y_house_price.reshape(<span class="number">1</span>)*<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[535482.20620233]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/medias/pictures/1617952427520.png"></p>
+<p>得到flag</p>
 
                 
             </div>
@@ -439,7 +430,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/08/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">http://example.com/2021/04/08/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</a>
+                    <a href="http://example.com/2021/04/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">http://example.com/2021/04/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -646,9 +637,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/09/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
                     <div class="card-image">
@@ -666,9 +658,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -681,6 +673,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -691,13 +684,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/08/Upload-Labs-Linux%201/">
+                <a href="/2021/04/08/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="简述文件上传漏洞">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="人工智能之线性回归-预测房价">
                         
-                        <span class="card-title">简述文件上传漏洞</span>
+                        <span class="card-title">人工智能之线性回归-预测房价</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -714,8 +707,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ctf/" class="post-category">
-                                    ctf
+                            <a href="/categories/python/" class="post-category">
+                                    python
                                 </a>
                             
                             
