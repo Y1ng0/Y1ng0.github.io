@@ -404,13 +404,13 @@
 
 <p><img src="/medias/pictures/1617952427520.png"></p>
 <p>得到flag</p>
-<h1 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h1><p><img src="/root/snap/typora/33/.config/Typora/typora-user-images/image-20210409035053052.png" alt="image-20210409035053052"></p>
+<h1 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h1><p><img src="medias/pictures//image-20210409035053052.png" alt="image-20210409035053052"></p>
 <p>尝试后发现没有过滤，直接burp抓包，构建payload</p>
-<p><img src="/root/snap/typora/33/.config/Typora/typora-user-images/image-20210409035159727.png" alt="image-20210409035159727"></p>
+<p><img src="medias/pictures/image-20210409035159727.png" alt="image-20210409035159727"></p>
 <p>得到flag</p>
-<h1 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h1><p><img src="/root/snap/typora/33/.config/Typora/typora-user-images/image-20210409052829194.png" alt="image-20210409052829194"></p>
+<h1 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h1><p><img src="medias/pictures/image-20210409052829194.png" alt="image-20210409052829194"></p>
 <p>和上题类似，同样是命令注入</p>
-<p><img src="/root/snap/typora/33/.config/Typora/typora-user-images/image-20210409052807701.png" alt="image-20210409052807701"></p>
+<p><img src="medias/pictures/image-20210409052807701.png" alt="image-20210409052807701"></p>
 <p>但构建payload时发现进行了过滤，空格不被识别</p>
 <p>bash命令绕过空格过滤：</p>
 <pre><code>1. &lt;&gt;
@@ -418,11 +418,11 @@
  3. %09(tab的url编码)
  4. $IFS$1    $&#123;IFS&#125;     $IFS                  在shell中$IFS用于内部字段分隔符
 </code></pre>
-<p><img src="/root/snap/typora/33/.config/Typora/typora-user-images/image-20210409054240977.png" alt="image-20210409054240977"></p>
+<p><img src="medias/pictures/image-20210409054240977.png" alt="image-20210409054240977"></p>
 <p>过滤比较齐全，下面直接放出payload：</p>
-<p><img src="/root/snap/typora/33/.config/Typora/typora-user-images/image-20210409054420592.png" alt="image-20210409054420592"></p>
+<p><img src="medias/pictures/image-20210409054420592.png" alt="image-20210409054420592"></p>
 <p>查看源代码：</p>
-<p><img src="/root/snap/typora/33/.config/Typora/typora-user-images/image-20210409054438449.png" alt="image-20210409054438449"></p>
+<p><img src="medias/pictures/image-20210409054438449.png" alt="image-20210409054438449"></p>
 <p>得到flag</p>
 
                 
