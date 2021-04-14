@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-07
+                    2021-04-13
                 </div>
                 
 
@@ -449,9 +449,13 @@
 <p>小习题:</p>
 <ol>
 <li><p>生成包含20个1到100之间随机整数的列表,然后删除列表中所有的奇数,要求先打印原始列表,然后打印删除后的列表</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">a_list = [random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line"><span class="built_in">print</span>(a_list)</span><br><span class="line"></span><br><span class="line">b_list = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    <span class="keyword">if</span> a_list[i]%<span class="number">2</span> ==<span class="number">0</span>:</span><br><span class="line">        b_list.append(a_list[i])</span><br><span class="line"><span class="built_in">print</span>(b_list)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">a_list = [random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line"><span class="built_in">print</span>(a_list)</span><br><span class="line"></span><br><span class="line">b_list = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>):</span><br><span class="line">    <span class="keyword">if</span> a_list[i]%<span class="number">2</span> ==<span class="number">0</span>:</span><br><span class="line">        b_list.append(a_list[i])</span><br><span class="line"><span class="built_in">print</span>(b_list)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">a_list = [random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line"><span class="built_in">print</span>(a_list)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a_list[::]:</span><br><span class="line">	<span class="keyword">if</span> i%<span class="number">2</span>==<span class="number">1</span>:</span><br><span class="line">		a_list.remove(i)</span><br></pre></td></tr></table></figure></li>
 <li><p>生成包含20个1到100之间随机整数的列表,对偶数下标的元素进行升序排列,对奇数下标的元素进行降序排列,要求先打印原始列表,然后打印排序后的列表</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">a_list = [random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line"><span class="built_in">print</span>(a_list)</span><br><span class="line"></span><br><span class="line">a_list_sort = <span class="built_in">sorted</span>(a_list[::<span class="number">2</span>])</span><br><span class="line">a_list_sort_reverse = <span class="built_in">list</span>(<span class="built_in">reversed</span>(<span class="built_in">sorted</span>(a_list[<span class="number">1</span>::<span class="number">2</span>])))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a_list_sort)</span><br><span class="line"><span class="built_in">print</span>(a_list_sort_reverse)</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">a_list = [random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line"><span class="built_in">print</span>(a_list)</span><br><span class="line"></span><br><span class="line">a_list_sort = <span class="built_in">sorted</span>(a_list[::<span class="number">2</span>])</span><br><span class="line">a_list_sort_reverse = <span class="built_in">list</span>(<span class="built_in">reversed</span>(<span class="built_in">sorted</span>(a_list[<span class="number">1</span>::<span class="number">2</span>])))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a_list_sort)</span><br><span class="line"><span class="built_in">print</span>(a_list_sort_reverse)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">a_list = [random.randint(<span class="number">1</span>,<span class="number">100</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">20</span>)]</span><br><span class="line">a_list[::<span class="number">2</span>] = <span class="built_in">sorted</span>(a_list[::<span class="number">2</span>])</span><br><span class="line">a_list[<span class="number">1</span>::<span class="number">2</span>] = <span class="built_in">sorted</span>(a_list[<span class="number">1</span>::<span class="number">2</span>],reverse=true)</span><br><span class="line"><span class="built_in">print</span>(a_list)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
                 
@@ -479,7 +483,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/07/list-2/">http://example.com/2021/04/07/list-2/</a>
+                    <a href="http://example.com/2021/04/13/list-2/">http://example.com/2021/04/13/list-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -686,58 +690,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/04/08/Upload-Labs-Linux%201/">
+                <a href="/2021/04/13/list-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="简述文件上传漏洞">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="list-2">
                         
-                        <span class="card-title">简述文件上传漏洞</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-08
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/ctf/" class="post-category">
-                                    ctf
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/04/06/3-%E5%88%97%E8%A1%A8/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="list">
-                        
-                        <span class="card-title">list</span>
+                        <span class="card-title">list-2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -748,7 +712,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-13
                             </span>
                         <span class="publish-author">
                             
@@ -756,6 +720,48 @@
                             
                             <a href="/categories/python/" class="post-category">
                                     python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/04/12/2021-4-11%20%5BV&N2020%20%E5%85%AC%E5%BC%80%E8%B5%9B%5DCHECKIN%20230825/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="web小计">
+                        
+                        <span class="card-title">web小计</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ctf/" class="post-category">
+                                    ctf
                                 </a>
                             
                             
