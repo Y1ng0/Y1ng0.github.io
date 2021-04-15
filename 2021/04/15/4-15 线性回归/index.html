@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="tuple, Y1ng0&#39;s blog">
+    <meta name="keywords" content="人工智能之线性回归-鸢尾花模型, Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>tuple | Y1ng0&#39;s blog</title>
+    <title>人工智能之线性回归-鸢尾花模型 | Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">tuple</h1>
+                    <h1 class="description center-align post-title">人工智能之线性回归-鸢尾花模型</h1>
                 </div>
             </div>
         </div>
@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-13
+                    2021-04-15
                 </div>
                 
 
@@ -385,32 +385,266 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="元组（tuple）"><a href="#元组（tuple）" class="headerlink" title="元组（tuple）"></a>元组（tuple）</h1><p>属于不可变序列</p>
-<p>使用“=”将一个元组复制给变量</p>
-<p>包含一个元素的元组，最后必须多写个<code>逗号</code></p>
-<p>元组不允许更改数据,可以对不需要改变的数据进行‘<code>写保护</code>’，运行速度比列表快</p>
-<p>元组可用作<code>字典键</code>，也可以作为集合的元素</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="number">1</span>,) <span class="comment"># 一个元素的元组</span></span><br><span class="line">a = () <span class="comment"># 空元组</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">tuple</span>(<span class="string">&#x27;abcdefh&#x27;</span>) <span class="comment"># 将字符串转换为元组</span></span><br><span class="line"></span><br><span class="line">a_list = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">tuple</span>(a_list) <span class="comment"># 将列表转换为元组</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>元组包含列表或其他类型的可变对象，对象是可变的，元组元素的引用仍不变</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = ([<span class="number">1</span>,<span class="number">2</span>],<span class="number">3</span>)</span><br><span class="line">x[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">5</span></span><br><span class="line">x = ([<span class="number">5</span>,<span class="number">2</span>],<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = ([<span class="number">1</span>,<span class="number">2</span>],<span class="number">3</span>)</span><br><span class="line">x[<span class="number">0</span>]+=[<span class="number">10</span>]</span><br><span class="line">x = ([<span class="number">1</span>,<span class="number">2</span>,<span class="number">10</span>],<span class="number">3</span>)</span><br><span class="line">虽然报错，但执行成功，其中调用<span class="built_in">list</span>.extend（）,<span class="built_in">list</span>增添成功，复制到元组出错</span><br></pre></td></tr></table></figure>
-
-<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>无序，可变序列，使用一对大括号界定，<code>元素不可重复,自动去除重复</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;<span class="number">3</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">a_set = <span class="built_in">set</span>(<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">5</span>)) <span class="comment"># 将其他类型转换为集合</span></span><br><span class="line">a_set = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">a_set = &#123;&#125; <span class="comment"># 空集合</span></span><br><span class="line"></span><br><span class="line">a_set.pop() <span class="comment"># 弹出并删除其中(从最左边开始)一个元素</span></span><br><span class="line">a_set.remove() <span class="comment"># 删除指定元素</span></span><br><span class="line">a_set.clear() <span class="comment"># 清空集合</span></span><br><span class="line">a_set.add() <span class="comment"># 增加元素</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a_set | b_set</span><br><span class="line">a_set &amp; b_set</span><br><span class="line">a_set - b_set</span><br><span class="line">a_set ^ b_set   <span class="comment">#对称差集   交集-并集</span></span><br></pre></td></tr></table></figure>
-
-<p>每日例题：</p>
+                <h1 id="二、鸢尾花分类"><a href="#二、鸢尾花分类" class="headerlink" title="二、鸢尾花分类"></a>二、鸢尾花分类</h1><p>数据集：</p>
 <ol>
-<li><p>从键盘输入小于1000的整数n，对n进行因式分解，将所有因子存入列表，然后输出列表，并按下面格式输出结果，例如输入60,显示：</p>
-<p>[2,2,3,5]</p>
-<p>60 = 2* 2* 3* 5</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="built_in">input</span>(<span class="string">&quot;please input a number(&lt;1000):&quot;</span>)</span><br><span class="line">num_int = <span class="built_in">int</span>(num)</span><br><span class="line">a_list = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,num_int+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">while</span> num_int % i == <span class="number">0</span>:</span><br><span class="line">        a_list.append(i)</span><br><span class="line">        num_int = num_int/i</span><br><span class="line">    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a_list)</span><br><span class="line"><span class="built_in">print</span>(num,<span class="string">&quot;=&quot;</span>,<span class="string">&#x27;*&#x27;</span>.join(<span class="built_in">map</span>(<span class="built_in">str</span>,a_list)))</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>输出所有由1,2,3,4这四个数字组成的素数，并且在每个素数中每个数字只允许使用一次。建议使用itertools包的组合函数permutations</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> itertools <span class="keyword">import</span> permutations</span><br><span class="line"></span><br><span class="line">a_list = <span class="built_in">list</span>(permutations([<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;4&#x27;</span>]))</span><br><span class="line"></span><br><span class="line">b_list = [<span class="built_in">int</span>(<span class="string">&#x27;&#x27;</span>.join(<span class="built_in">list</span>(a_list[i-<span class="number">1</span>]))) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(a_list))]</span><br><span class="line"><span class="built_in">print</span>(b_list)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> b_list:</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,i):</span><br><span class="line">        <span class="keyword">if</span> i % j ==<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure></li>
+<li>sepla length 萼片长度</li>
+<li>sepla width 萼片宽度</li>
+<li>petal length 花瓣长度</li>
+<li>petal width 花瓣宽度</li>
 </ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> sklearn <span class="keyword">as</span> ak</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"><span class="comment">#数据对象中包含的内容，通过keys()打印出来</span></span><br><span class="line"><span class="built_in">print</span>(iris.keys())</span><br></pre></td></tr></table></figure>
+
+<pre><code>dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;frame&#39;, &#39;target_names&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;filename&#39;])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全部打印，，看看类型</span></span><br><span class="line"><span class="built_in">print</span>(iris.data)</span><br><span class="line"><span class="built_in">print</span>(iris.target)</span><br><span class="line"><span class="built_in">print</span>(iris.frame)</span><br><span class="line"><span class="built_in">print</span>(iris.target_names)</span><br><span class="line"><span class="built_in">print</span>(iris.DESCR)</span><br><span class="line"><span class="built_in">print</span>(iris.feature_names)</span><br><span class="line"><span class="built_in">print</span>(iris.filename)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[5.1 3.5 1.4 0.2]
+ [4.9 3.  1.4 0.2]
+ [4.7 3.2 1.3 0.2]
+ [4.6 3.1 1.5 0.2]
+ [5.  3.6 1.4 0.2]
+ [5.4 3.9 1.7 0.4]
+ [4.6 3.4 1.4 0.3]
+ [5.  3.4 1.5 0.2]
+ [4.4 2.9 1.4 0.2]
+ [4.9 3.1 1.5 0.1]
+ [5.4 3.7 1.5 0.2]
+ [4.8 3.4 1.6 0.2]
+ [4.8 3.  1.4 0.1]
+ [4.3 3.  1.1 0.1]
+ [5.8 4.  1.2 0.2]
+ [5.7 4.4 1.5 0.4]
+ [5.4 3.9 1.3 0.4]
+ [5.1 3.5 1.4 0.3]
+ [5.7 3.8 1.7 0.3]
+ [5.1 3.8 1.5 0.3]
+ [5.4 3.4 1.7 0.2]
+ [5.1 3.7 1.5 0.4]
+ [4.6 3.6 1.  0.2]
+ [5.1 3.3 1.7 0.5]
+ [4.8 3.4 1.9 0.2]
+ [5.  3.  1.6 0.2]
+ [5.  3.4 1.6 0.4]
+ [5.2 3.5 1.5 0.2]
+ [5.2 3.4 1.4 0.2]
+ [4.7 3.2 1.6 0.2]
+ [4.8 3.1 1.6 0.2]
+ [5.4 3.4 1.5 0.4]
+ [5.2 4.1 1.5 0.1]
+ [5.5 4.2 1.4 0.2]
+ [4.9 3.1 1.5 0.2]
+ [5.  3.2 1.2 0.2]
+ [5.5 3.5 1.3 0.2]
+ [4.9 3.6 1.4 0.1]
+ [4.4 3.  1.3 0.2]
+ [5.1 3.4 1.5 0.2]
+ [5.  3.5 1.3 0.3]
+ [4.5 2.3 1.3 0.3]
+ [4.4 3.2 1.3 0.2]
+ [5.  3.5 1.6 0.6]
+ [5.1 3.8 1.9 0.4]
+ [4.8 3.  1.4 0.3]
+ [5.1 3.8 1.6 0.2]
+ [4.6 3.2 1.4 0.2]
+ [5.3 3.7 1.5 0.2]
+ [5.  3.3 1.4 0.2]
+ [7.  3.2 4.7 1.4]
+ [6.4 3.2 4.5 1.5]
+ [6.9 3.1 4.9 1.5]
+ [5.5 2.3 4.  1.3]
+ [6.5 2.8 4.6 1.5]
+ [5.7 2.8 4.5 1.3]
+ [6.3 3.3 4.7 1.6]
+ [4.9 2.4 3.3 1. ]
+ [6.6 2.9 4.6 1.3]
+ [5.2 2.7 3.9 1.4]
+ [5.  2.  3.5 1. ]
+ [5.9 3.  4.2 1.5]
+ [6.  2.2 4.  1. ]
+ [6.1 2.9 4.7 1.4]
+ [5.6 2.9 3.6 1.3]
+ [6.7 3.1 4.4 1.4]
+ [5.6 3.  4.5 1.5]
+ [5.8 2.7 4.1 1. ]
+ [6.2 2.2 4.5 1.5]
+ [5.6 2.5 3.9 1.1]
+ [5.9 3.2 4.8 1.8]
+ [6.1 2.8 4.  1.3]
+ [6.3 2.5 4.9 1.5]
+ [6.1 2.8 4.7 1.2]
+ [6.4 2.9 4.3 1.3]
+ [6.6 3.  4.4 1.4]
+ [6.8 2.8 4.8 1.4]
+ [6.7 3.  5.  1.7]
+ [6.  2.9 4.5 1.5]
+ [5.7 2.6 3.5 1. ]
+ [5.5 2.4 3.8 1.1]
+ [5.5 2.4 3.7 1. ]
+ [5.8 2.7 3.9 1.2]
+ [6.  2.7 5.1 1.6]
+ [5.4 3.  4.5 1.5]
+ [6.  3.4 4.5 1.6]
+ [6.7 3.1 4.7 1.5]
+ [6.3 2.3 4.4 1.3]
+ [5.6 3.  4.1 1.3]
+ [5.5 2.5 4.  1.3]
+ [5.5 2.6 4.4 1.2]
+ [6.1 3.  4.6 1.4]
+ [5.8 2.6 4.  1.2]
+ [5.  2.3 3.3 1. ]
+ [5.6 2.7 4.2 1.3]
+ [5.7 3.  4.2 1.2]
+ [5.7 2.9 4.2 1.3]
+ [6.2 2.9 4.3 1.3]
+ [5.1 2.5 3.  1.1]
+ [5.7 2.8 4.1 1.3]
+ [6.3 3.3 6.  2.5]
+ [5.8 2.7 5.1 1.9]
+ [7.1 3.  5.9 2.1]
+ [6.3 2.9 5.6 1.8]
+ [6.5 3.  5.8 2.2]
+ [7.6 3.  6.6 2.1]
+ [4.9 2.5 4.5 1.7]
+ [7.3 2.9 6.3 1.8]
+ [6.7 2.5 5.8 1.8]
+ [7.2 3.6 6.1 2.5]
+ [6.5 3.2 5.1 2. ]
+ [6.4 2.7 5.3 1.9]
+ [6.8 3.  5.5 2.1]
+ [5.7 2.5 5.  2. ]
+ [5.8 2.8 5.1 2.4]
+ [6.4 3.2 5.3 2.3]
+ [6.5 3.  5.5 1.8]
+ [7.7 3.8 6.7 2.2]
+ [7.7 2.6 6.9 2.3]
+ [6.  2.2 5.  1.5]
+ [6.9 3.2 5.7 2.3]
+ [5.6 2.8 4.9 2. ]
+ [7.7 2.8 6.7 2. ]
+ [6.3 2.7 4.9 1.8]
+ [6.7 3.3 5.7 2.1]
+ [7.2 3.2 6.  1.8]
+ [6.2 2.8 4.8 1.8]
+ [6.1 3.  4.9 1.8]
+ [6.4 2.8 5.6 2.1]
+ [7.2 3.  5.8 1.6]
+ [7.4 2.8 6.1 1.9]
+ [7.9 3.8 6.4 2. ]
+ [6.4 2.8 5.6 2.2]
+ [6.3 2.8 5.1 1.5]
+ [6.1 2.6 5.6 1.4]
+ [7.7 3.  6.1 2.3]
+ [6.3 3.4 5.6 2.4]
+ [6.4 3.1 5.5 1.8]
+ [6.  3.  4.8 1.8]
+ [6.9 3.1 5.4 2.1]
+ [6.7 3.1 5.6 2.4]
+ [6.9 3.1 5.1 2.3]
+ [5.8 2.7 5.1 1.9]
+ [6.8 3.2 5.9 2.3]
+ [6.7 3.3 5.7 2.5]
+ [6.7 3.  5.2 2.3]
+ [6.3 2.5 5.  1.9]
+ [6.5 3.  5.2 2. ]
+ [6.2 3.4 5.4 2.3]
+ [5.9 3.  5.1 1.8]]
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2]
+None
+[&#39;setosa&#39; &#39;versicolor&#39; &#39;virginica&#39;]
+.. _iris_dataset:
+
+Iris plants dataset
+--------------------
+
+**Data Set Characteristics:**
+
+    :Number of Instances: 150 (50 in each of three classes)
+    :Number of Attributes: 4 numeric, predictive attributes and the class
+    :Attribute Information:
+        - sepal length in cm
+        - sepal width in cm
+        - petal length in cm
+        - petal width in cm
+        - class:
+                - Iris-Setosa
+                - Iris-Versicolour
+                - Iris-Virginica
+                
+    :Summary Statistics:
+
+    ============== ==== ==== ======= ===== ====================
+                    Min  Max   Mean    SD   Class Correlation
+    ============== ==== ==== ======= ===== ====================
+    sepal length:   4.3  7.9   5.84   0.83    0.7826
+    sepal width:    2.0  4.4   3.05   0.43   -0.4194
+    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
+    petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)
+    ============== ==== ==== ======= ===== ====================
+
+    :Missing Attribute Values: None
+    :Class Distribution: 33.3% for each of 3 classes.
+    :Creator: R.A. Fisher
+    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+    :Date: July, 1988
+
+The famous Iris database, first used by Sir R.A. Fisher. The dataset is taken
+from Fisher&#39;s paper. Note that it&#39;s the same as in R, but not as in the UCI
+Machine Learning Repository, which has two wrong data points.
+
+This is perhaps the best known database to be found in the
+pattern recognition literature.  Fisher&#39;s paper is a classic in the field and
+is referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The
+data set contains 3 classes of 50 instances each, where each class refers to a
+type of iris plant.  One class is linearly separable from the other 2; the
+latter are NOT linearly separable from each other.
+
+.. topic:: References
+
+   - Fisher, R.A. &quot;The use of multiple measurements in taxonomic problems&quot;
+     Annual Eugenics, 7, Part II, 179-188 (1936); also in &quot;Contributions to
+     Mathematical Statistics&quot; (John Wiley, NY, 1950).
+   - Duda, R.O., &amp; Hart, P.E. (1973) Pattern Classification and Scene Analysis.
+     (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.
+   - Dasarathy, B.V. (1980) &quot;Nosing Around the Neighborhood: A New System
+     Structure and Classification Rule for Recognition in Partially Exposed
+     Environments&quot;.  IEEE Transactions on Pattern Analysis and Machine
+     Intelligence, Vol. PAMI-2, No. 1, 67-71.
+   - Gates, G.W. (1972) &quot;The Reduced Nearest Neighbor Rule&quot;.  IEEE Transactions
+     on Information Theory, May 1972, 431-433.
+   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al&quot;s AUTOCLASS II
+     conceptual clustering system finds 3 classes in the data.
+   - Many, many more ...
+[&#39;sepal length (cm)&#39;, &#39;sepal width (cm)&#39;, &#39;petal length (cm)&#39;, &#39;petal width (cm)&#39;]
+E:\anaconda\lib\site-packages\sklearn\datasets\data\iris.csv
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x_features = iris.data</span><br><span class="line">y_target = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment">#先考虑sepla length,petal length两个特征值，位于x_features的第一列和第三列</span></span><br><span class="line"></span><br><span class="line">plt.scatter(x_features[<span class="number">0</span>:<span class="number">50</span>,<span class="number">0</span>],x_features[<span class="number">0</span>:<span class="number">50</span>,<span class="number">2</span>],color = <span class="string">&#x27;blue&#x27;</span>,marker = <span class="string">&#x27;x&#x27;</span>,label = <span class="string">&#x27;setosa&#x27;</span>)</span><br><span class="line">plt.scatter(x_features[<span class="number">50</span>:<span class="number">100</span>,<span class="number">0</span>],x_features[<span class="number">50</span>:<span class="number">100</span>,<span class="number">2</span>],color = <span class="string">&#x27;red&#x27;</span>,marker = <span class="string">&#x27;o&#x27;</span>,label = <span class="string">&#x27;versicolor&#x27;</span>)</span><br><span class="line">plt.scatter(x_features[<span class="number">100</span>:<span class="number">150</span>,<span class="number">0</span>],x_features[<span class="number">100</span>:<span class="number">150</span>,<span class="number">2</span>],color = <span class="string">&#x27;green&#x27;</span>,marker = <span class="string">&#x27;*&#x27;</span>,label = <span class="string">&#x27;virginica&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&#x27;sepal length (cm)&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;petal length (cm)&quot;</span>)</span><br><span class="line">plt.legend(loc = <span class="string">&#x27;upper left&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="output_5_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用KNN算法按K=10的参数进行模型训练</span></span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">knn.fit(x_features[:,::<span class="number">2</span>],y_target)  <span class="comment">#切出数据中的第一列和第三列</span></span><br><span class="line"></span><br><span class="line">x_test_features = np.array([[<span class="number">3.1</span>,<span class="number">8</span>]])</span><br><span class="line">y_judge_class = knn.predict(x_test_features)</span><br><span class="line"><span class="built_in">print</span>(y_judge_class)</span><br><span class="line"><span class="built_in">print</span>(iris.target_names)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;the specified features iris is:&quot;</span>,iris.target_names[y_judge_class[<span class="number">0</span>]])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[2]
+[&#39;setosa&#39; &#39;versicolor&#39; &#39;virginica&#39;]
+the specified features iris is: virginica
+</code></pre>
+<p>使用完整的四列特征按k=20进行训练<br>测量到一朵鸢尾花的四个特征分别是1.3cm，3.4cm，1.6cm，5.1cm</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用KNN算法按K=20的参数进行模型训练</span></span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">20</span>)</span><br><span class="line">knn.fit(x_features,y_target)</span><br><span class="line"></span><br><span class="line">x_test_lab = np.array([[<span class="number">1.3</span>,<span class="number">3.4</span>,<span class="number">1.6</span>,<span class="number">5.1</span>]])</span><br><span class="line">y_judge_class = knn.predict(x_test_lab)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;the specified features iris is:&quot;</span>,iris.target_names[y_judge_class[<span class="number">0</span>]])</span><br></pre></td></tr></table></figure>
+
+<pre><code>the specified features iris is: setosa
+</code></pre>
+<p>使用逻辑算法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line">LR = LogisticRegression(multi_class=<span class="string">&#x27;multinomial&#x27;</span>,solver=<span class="string">&#x27;lbfgs&#x27;</span>,max_iter=<span class="number">1000</span>)</span><br><span class="line">LR.fit(x_features, y_target)</span><br><span class="line"></span><br><span class="line">y_predict_class = LR.predict(x_test_lab)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The specified features iris is by LR:&quot;</span>, iris.target_names[y_predict_class[<span class="number">0</span>]])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>The specified features iris is by LR: setosa
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
                 
             </div>
@@ -437,7 +671,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/13/%E5%85%83%E7%BB%84%EF%BC%88tuple%EF%BC%89/">http://example.com/2021/04/13/%E5%85%83%E7%BB%84%EF%BC%88tuple%EF%BC%89/</a>
+                    <a href="http://example.com/2021/04/15/4-15%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">http://example.com/2021/04/15/4-15%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -644,9 +878,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/15/4-15%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
                     <div class="card-image">
@@ -664,9 +899,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -679,6 +914,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -689,13 +925,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/13/list-2/">
+                <a href="/2021/04/13/%E5%85%83%E7%BB%84%EF%BC%88tuple%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="list-2">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="tuple">
                         
-                        <span class="card-title">list-2</span>
+                        <span class="card-title">tuple</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
